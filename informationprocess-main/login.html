@@ -449,22 +449,22 @@
             </thead>
             <tbody>
                 <tr>
-                    <td class="tdtitle"><a href="subject.html?subject=c" target="_blank">[C언어] 정보처리기사 실기 기출</a></td>
+                    <td class="tdtitle"><a href="subject.html?subject=c&variable=c&year=2023&lastDigit=1&questionNumber=0" target="_blank">[C언어] 정보처리기사 실기 기출</a></td>
                     <td class="solv_time"></td>
                     <td class="score"></td>
                 </tr>
                 <tr>
-                    <td class="tdtitle"><a href="subject.html?subject=java" target="_blank">[JAVA] 정보처리기사 실기 기출</a></td>
+                    <td class="tdtitle"><a href="subject.html?subject=java&variable=java&year=2023&lastDigit=1&questionNumber=0" target="_blank">[JAVA] 정보처리기사 실기 기출</a></td>
                     <td class="solv_time"></td>
                     <td class="score"></td>
                 </tr>
                 <tr>
-                    <td class="tdtitle"><a href="subject.html?subject=python" target="_blank">[PYTHON] 정보처리기사 실기 기출</a></td>
+                    <td class="tdtitle"><a href="subject.html?subject=java&variable=python&year=2023&lastDigit=1&questionNumber=0" target="_blank">[PYTHON] 정보처리기사 실기 기출</a></td>
                     <td class="solv_time"></td>
                     <td class="score"></td>
                 </tr>
                 <tr>
-                    <td class="tdtitle"><a href="subject.html?subject=db" target="_blank">[데이터베이스] 정보처리기사 실기 기출</a></td>
+                    <td class="tdtitle"><a href="subject.html?subject=java&variable=db&year=2023&lastDigit=1&questionNumber=0" target="_blank">[데이터베이스] 정보처리기사 실기 기출</a></td>
                     <td class="solv_time"></td>
                     <td class="score"></td>
                 </tr>
@@ -493,11 +493,13 @@
     //     console.log(JSON.parse(localStorage.getItem('users')));
     // }
 
+
     window.onload = function(){
         
 
         var loggedInUser = JSON.parse(sessionStorage.getItem('loggedInUser'));
                 console.log(loggedInUser.id+loggedInUser.name+loggedInUser.email);
+                
         // loggedInUser = sessionStorage.getItem('loggedInUser');
         // console.log(loggedInUser);
         // var storedLoggedInUser = JSON.parse(sessionStorage.getItem('loggedInUser'));
@@ -510,9 +512,8 @@
 
                 userName.textContent = loggedInUser.name;
                 userEmail.textContent = loggedInUser.email;
-                
+
                 const allSessionData = {
-                    
         'sessionData': JSON.parse(sessionStorage.getItem('sessionData')),
         'sessionData2': JSON.parse(sessionStorage.getItem('sessionData2')),
         'sessionData3': JSON.parse(sessionStorage.getItem('sessionData3')),
