@@ -59,24 +59,25 @@ var Questions = {
 
             },
         {"name":'문제 3: 다음 C언어의 출력값을 작성하시오.',
-            "code": `\n\n #include <stdio.h>
+            "code": `\n\n
+            #include <stdio.h>
  
-                int main(){
+            int main(){
                 
-                    char a[] = "Art";
-                    char* p = NULL;
-                    p = a;
+                char a[] = "Art";
+                char* p = NULL;
+                p = a;
                  
-                    printf("%s\\n", a);
-                    printf("%c\\n", *p);
-                    printf("%c\\n", *a);
-                    printf("%s\\n", p);
+                printf("%s\\n", a);
+                printf("%c\\n", *p);
+                printf("%c\\n", *a);
+                printf("%s\\n", p);
                  
-                    for(int i = 0; a[i] != '\0'; i++)
-                    printf("%c", a[i]);
+                for(int i = 0; a[i] != '\0'; i++)
+                printf("%c", a[i]);
                  
-                }
-                Colored
+            }
+            Colored
 
         `,
         "answer":['qwe'],

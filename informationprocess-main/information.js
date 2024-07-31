@@ -114,12 +114,25 @@ document.querySelectorAll('.submenu').forEach(submenu => {
     document.getElementById('correctAnswer' + questionNumber).textContent = '';
     document.getElementById('answerResult' + questionNumber).style.display = 'none';
   }
+  
   function changePageToMain() {
-    location.href = 'project.html';
+    var loggedInUser = JSON.parse(sessionStorage.getItem('loggedInUser'));
+    console.log("로그인아이디 : "+loggedInUser.id);
+    if(loggedInUser.id){location.href = 'login.html';
+
+    } else { location.href = 'project.html';
+
+    };
+    
+
   }
   document.getElementById('menuOpen').addEventListener('click', function(){
     const menu =document.getElementById('menu');
+    const mainContent = document.getElementById('main-content');
     menu.style.display = menu.style.display === 'none' ? 'flex' : 'none';
+    mainContent.style.marginLeft = menu.style.display === 'none' ? '120px' : '300px';
+
+    
   }); 
   
   

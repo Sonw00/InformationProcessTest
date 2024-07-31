@@ -8,8 +8,8 @@
   <link rel='stylesheet' href="information.css">
 </head>
 <body>
-  <div id="timer2">제한시간:02:30:00</div>
-  <div id="timer">02:30:00</div>
+  <!-- <div id="timer2">제한시간:02:30:00</div>
+  <div id="timer">02:30:00</div> -->
   <button id="menuOpen">메뉴</button>
   <div id="menu">
     <p><br></p>
@@ -210,11 +210,11 @@
     }
 
     if (n < 4 && i >= questions.length-1 ) {
-        const nextPage = (parseInt(page) + 1).toString();
-        if(Questions.hasOwnProperty(nextPage)){
+        const prevPage = (parseInt(page) - 1).toString();
+        if(Questions.hasOwnProperty(prevPage)){
 
-            console.log(Questions.hasOwnProperty(nextPage));
-            loadSubjectQuestionSet(type, nextPage, 0);
+            console.log(Questions.hasOwnProperty(prevPage));
+            loadSubjectQuestionSet(type, prevPage, 0);
         }
     }
 }
@@ -355,23 +355,26 @@ function checkAnswer_and(questionNumber, correctAnswer) {
     // 결과 객체를 반환합니다.
     return result;
 }
-
     document.addEventListener('DOMContentLoaded', function () {
+    totalTime = sessionStorage.getItem("totalTime");
+    totalTime = totalTime ? parseInt(totalTime, 10) : 0;
 
     var subject = getQueryVariable("subject");
     console.log("Subject:", subject); // 여기서 subject 변수에 접근하여 사용 가능합니다.
 
     var queryResult = getQueryVariables('variable', 'year', 'lastDigit', 'questionNumber');
     // 결과 출력
-    console.log(queryResult.variable); // "value1"
-    console.log(queryResult.year); // "2023"
-    console.log(queryResult.lastDigit); // "1"
-    console.log(queryResult.questionNumber); // "5"
-    loadSubjectQuestionSet(queryResult.variable,queryResult.year+queryResult.lastDigit,queryResult.questionNumber);
-
+    if (queryResult.variable) {
+        console.log(queryResult.variable); // "value1"
+        console.log(queryResult.year); // "2023"
+        console.log(queryResult.lastDigit); // "1"
+        console.log(queryResult.questionNumber); // "5"
+        loadSubjectQuestionSet(queryResult.variable, queryResult.year + queryResult.lastDigit, queryResult.questionNumber);
+    } else {
+        console.log("No query parameters found");
+        loadSubjectQuestionSet(subject,'20231','0');
+}
     // 타이머 설정
-    let totalTime = sessionStorage.getItem("totalTime");
-    totalTime = totalTime ? parseInt(totalTime, 10) : 0; // totalTime 초기화
 
     if (window.location.pathname.endsWith('project.html')) {
             // 세션 스토리지에서 textarea 데이터 제거
@@ -379,6 +382,7 @@ function checkAnswer_and(questionNumber, correctAnswer) {
                 sessionStorage.removeItem(textarea.id);
             });
         }
+
 
     
         // textarea의 상태를 로컬 스토리지에서 복원합니다.
@@ -395,27 +399,6 @@ function checkAnswer_and(questionNumber, correctAnswer) {
         });
     
 
-    function updateTimer() {
-      
-        const timerElement = document.getElementById('timer'); //타이머
-        const hours = Math.floor(totalTime / 3600); //시간
-        const minutes = Math.floor((totalTime % 3600) / 60);
-        const seconds = totalTime % 60;
-
-        timerElement.textContent = 
-            `경과시간:${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-
-        if (totalTime < 2 * 60 * 60 + 30 * 60) { //제한시간 2시간 반
-            totalTime++;
-            sessionStorage.setItem("totalTime", totalTime); // totalTime 저장
-            setTimeout(updateTimer, 1000); //1초씩 흘러감
-        } else {
-            
-            alert(`제한시간이 경과되었습니다 ${count * 5}점 입니다.`);
-        }
-    }
-
-    updateTimer();
 
     
 
@@ -431,12 +414,61 @@ function checkAnswer_and(questionNumber, correctAnswer) {
     
   });
 
+  function updateTimer() {
+    const timerElement = document.getElementById('timer');
+    const timer2Element = document.getElementById('timer2');
+
+    const totalSeconds = 2 * 60 * 60; // 2시간을 초로 변환
+
+    const elapsedHours = Math.floor(totalTime / 3600);
+    const elapsedMinutes = Math.floor((totalTime % 3600) / 60);
+    const elapsedSeconds = totalTime % 60;
+
+    const remainingSeconds = totalSeconds - totalTime;
+    const remainingHours = Math.floor(remainingSeconds / 3600);
+    const remainingMinutes = Math.floor((remainingSeconds % 3600) / 60);
+    const remainingSecondsLeft = remainingSeconds % 60;
+
+    timerElement.textContent = `경과시간: ${elapsedHours.toString().padStart(2, '0')}:${elapsedMinutes.toString().padStart(2, '0')}:${elapsedSeconds.toString().padStart(2, '0')}`;
+    timer2Element.textContent = `남은 시간: ${remainingHours.toString().padStart(2, '0')}:${remainingMinutes.toString().padStart(2, '0')}:${remainingSecondsLeft.toString().padStart(2, '0')}`;
+
+    if (totalTime < totalSeconds) {
+        totalTime++;
+        sessionStorage.setItem("totalTime", totalTime);
+        setTimeout(updateTimer, 1000);
+    } else {
+        alert(`제한시간이 경과되었습니다 ${count * 5}점 입니다.`);
+    }
+};
+//   window.onload = function updateTimer() {
+//     const timerElement = document.getElementById('timer');
+//     const timer2Element = document.getElementById('timer2');
+
+//     const totalSeconds = 2 * 60 * 60; // 2시간을 초로 변환
+
+//     const elapsedHours = Math.floor(totalTime / 3600);
+//     const elapsedMinutes = Math.floor((totalTime % 3600) / 60);
+//     const elapsedSeconds = totalTime % 60;
+
+//     const remainingSeconds = totalSeconds - totalTime;
+//     const remainingHours = Math.floor(remainingSeconds / 3600);
+//     const remainingMinutes = Math.floor((remainingSeconds % 3600) / 60);
+//     const remainingSecondsLeft = remainingSeconds % 60;
+
+//     timerElement.textContent = `경과시간: ${elapsedHours.toString().padStart(2, '0')}:${elapsedMinutes.toString().padStart(2, '0')}:${elapsedSeconds.toString().padStart(2, '0')}`;
+//     timer2Element.textContent = `남은 시간: ${remainingHours.toString().padStart(2, '0')}:${remainingMinutes.toString().padStart(2, '0')}:${remainingSecondsLeft.toString().padStart(2, '0')}`;
+
+//     if (totalTime < totalSeconds) {
+//         totalTime++;
+//         sessionStorage.setItem("totalTime", totalTime);
+//         setTimeout(updateTimer, 1000);
+//     } else {
+//         alert(`제한시간이 경과되었습니다 ${count * 5}점 입니다.`);
+//     }
+// }
+
     
 
-
-    function changePageToMain() {
-    location.href = 'project.html';
-  }
 
 
 
