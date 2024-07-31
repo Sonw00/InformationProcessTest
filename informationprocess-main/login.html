@@ -449,22 +449,22 @@
             </thead>
             <tbody>
                 <tr>
-                    <td class="tdtitle"><a href="" target="_blank">[C언어] 정보처리기사 실기 기출</a></td>
+                    <td class="tdtitle"><a href="subject.html?subject=c" target="_blank">[C언어] 정보처리기사 실기 기출</a></td>
                     <td class="solv_time"></td>
                     <td class="score"></td>
                 </tr>
                 <tr>
-                    <td class="tdtitle"><a href="" target="_blank">[JAVA] 정보처리기사 실기 기출</a></td>
+                    <td class="tdtitle"><a href="subject.html?subject=java" target="_blank">[JAVA] 정보처리기사 실기 기출</a></td>
                     <td class="solv_time"></td>
                     <td class="score"></td>
                 </tr>
                 <tr>
-                    <td class="tdtitle"><a href="" target="_blank">[PYTHON] 정보처리기사 실기 기출</a></td>
+                    <td class="tdtitle"><a href="subject.html?subject=python" target="_blank">[PYTHON] 정보처리기사 실기 기출</a></td>
                     <td class="solv_time"></td>
                     <td class="score"></td>
                 </tr>
                 <tr>
-                    <td class="tdtitle"><a href="" target="_blank">[데이터베이스] 정보처리기사 실기 기출</a></td>
+                    <td class="tdtitle"><a href="subject.html?subject=db" target="_blank">[데이터베이스] 정보처리기사 실기 기출</a></td>
                     <td class="solv_time"></td>
                     <td class="score"></td>
                 </tr>
@@ -510,6 +510,82 @@
 
                 userName.textContent = loggedInUser.name;
                 userEmail.textContent = loggedInUser.email;
+                
+                const allSessionData = {
+                    
+        'sessionData': JSON.parse(sessionStorage.getItem('sessionData')),
+        'sessionData2': JSON.parse(sessionStorage.getItem('sessionData2')),
+        'sessionData3': JSON.parse(sessionStorage.getItem('sessionData3')),
+        'sessionData4': JSON.parse(sessionStorage.getItem('sessionData4')),
+        'sessionData5': JSON.parse(sessionStorage.getItem('sessionData5')),
+        'sessionData6': JSON.parse(sessionStorage.getItem('sessionData6')),
+        'sessionData7': JSON.parse(sessionStorage.getItem('sessionData7')),
+        'sessionData8': JSON.parse(sessionStorage.getItem('sessionData8')),
+        'sessionData9': JSON.parse(sessionStorage.getItem('sessionData9')),
+        'sessionData10': JSON.parse(sessionStorage.getItem('sessionData10')),
+        'sessionData11': JSON.parse(sessionStorage.getItem('sessionData11')),
+        'sessionData12': JSON.parse(sessionStorage.getItem('sessionData12')),
+        'sessionData13': JSON.parse(sessionStorage.getItem('sessionData13'))
+
+    };
+
+    // 테이블 데이터 처리
+    const rows = document.querySelectorAll('tbody tr');
+    rows.forEach(row => {
+        const titleLink = row.getAttribute('data-link');
+
+        // 각 세션 데이터에 대해 처리
+        for (const [key, sessionData] of Object.entries(allSessionData)) {
+            if (sessionData) {
+                const totalTime = sessionData.totalTime;
+                const score = sessionData.score;
+                
+                if (titleLink === '2020_1_1.html' && key === 'sessionData') {
+                    row.querySelector('.solv_time').innerHTML = Math.floor(totalTime / 3600)+'시간'+Math.floor((totalTime%3600)/60) +'분'+totalTime%60+ '초';
+                    row.querySelector('.score').innerHTML = score + '점';
+                } else if (titleLink === '2020_2_1.html' && key === 'sessionData2') {
+                    row.querySelector('.solv_time').innerHTML = Math.floor(totalTime / 3600)+'시간'+Math.floor((totalTime%3600)/60) +'분'+totalTime%60+ '초';
+                    row.querySelector('.score').innerHTML = score + '점';
+                } else if (titleLink === '2020_3_1.html' && key === 'sessionData3') {
+                    row.querySelector('.solv_time').innerHTML = Math.floor(totalTime / 3600)+'시간'+Math.floor((totalTime%3600)/60) +'분'+totalTime%60+ '초';
+                    row.querySelector('.score').innerHTML = score + '점';
+                } else if (titleLink === '2020_4_1.html' && key === 'sessionData4') {
+                    row.querySelector('.solv_time').innerHTML = Math.floor(totalTime / 3600)+'시간'+Math.floor((totalTime%3600)/60) +'분'+totalTime%60+ '초';
+                    row.querySelector('.score').innerHTML = score + '점';
+
+                } else if (titleLink === '2021_1_1.html' && key === 'sessionData5') {
+                    row.querySelector('.solv_time').innerHTML = Math.floor(totalTime / 3600)+'시간'+Math.floor((totalTime%3600)/60) +'분'+totalTime%60+ '초';
+                    row.querySelector('.score').innerHTML = score + '점';
+                } else if (titleLink === '2021_2_1.html' && key === 'sessionData6') {
+                    row.querySelector('.solv_time').innerHTML = Math.floor(totalTime / 3600)+'시간'+Math.floor((totalTime%3600)/60) +'분'+totalTime%60+ '초';
+                    row.querySelector('.score').innerHTML = score + '점';
+                } else if (titleLink === '2021_3_1.html' && key === 'sessionData7') {
+                    row.querySelector('.solv_time').innerHTML = Math.floor(totalTime / 3600)+'시간'+Math.floor((totalTime%3600)/60) +'분'+totalTime%60+ '초';
+                    row.querySelector('.score').innerHTML = score + '점';
+
+                } else if (titleLink === '2022_1_1.html' && key === 'sessionData8') {
+                    row.querySelector('.solv_time').innerHTML = Math.floor(totalTime / 3600)+'시간'+Math.floor((totalTime%3600)/60) +'분'+totalTime%60+ '초';
+                    row.querySelector('.score').innerHTML = score + '점';
+                } else if (titleLink === '2022_2_1.html' && key === 'sessionData9') {
+                    row.querySelector('.solv_time').innerHTML = Math.floor(totalTime / 3600)+'시간'+Math.floor((totalTime%3600)/60) +'분'+totalTime%60+ '초';
+                    row.querySelector('.score').innerHTML = score + '점';
+                } else if (titleLink === '2022_3_1.html' && key === 'sessionData10') {
+                    row.querySelector('.solv_time').innerHTML = Math.floor(totalTime / 3600)+'시간'+Math.floor((totalTime%3600)/60) +'분'+totalTime%60+ '초';
+                    row.querySelector('.score').innerHTML = score + '점';
+
+                } else if (titleLink === '2023_1_1.html' && key === 'sessionData11') {
+                    row.querySelector('.solv_time').innerHTML = Math.floor(totalTime / 3600)+'시간'+Math.floor((totalTime%3600)/60) +'분'+totalTime%60+ '초';
+                    row.querySelector('.score').innerHTML = score + '점';
+                } else if (titleLink === '2023_2_1.html' && key === 'sessionData12') {
+                    row.querySelector('.solv_time').innerHTML = Math.floor(totalTime / 3600)+'시간'+Math.floor((totalTime%3600)/60) +'분'+totalTime%60+ '초';
+                    row.querySelector('.score').innerHTML = score + '점';
+                } else if (titleLink === '2023_3_1.html' && key === 'sessionData13') {
+                    row.querySelector('.solv_time').innerHTML = Math.floor(totalTime / 3600)+'시간'+Math.floor((totalTime%3600)/60) +'분'+totalTime%60+ '초';
+                    row.querySelector('.score').innerHTML = score + '점';
+                }
+            }
+        }
+    });
     }
 
 

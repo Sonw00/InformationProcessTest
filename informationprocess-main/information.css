@@ -23,17 +23,18 @@ body { /* */
   }
   #menuOpen{
     
+    position: fixed;
     display: block;
-    position: absolute;
     left: 20px;
     top: 20px;
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
-    border: none;
+    border:#000000;
     border-radius: 5px;
-    background-color: #7fb9f8;
+    background-color: #ddd;
     color: black;
+    z-index: 4;
 
   }
 
@@ -58,7 +59,7 @@ body { /* */
     box-shadow: 3px 0 5px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
-    z-index: 1000;
+    z-index: 3;
     height: 1000px;
     overflow-y: auto;
     
@@ -191,7 +192,7 @@ body { /* */
   top: 65px;
   right: 10px;
   font-size: 15px;
-  background-color: #ffdddd;
+  background-color: #ddd;
   padding: 10px;
   border-radius: 5px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
@@ -217,7 +218,7 @@ body { /* */
   top: 10px;
   right: 10px;
   font-size: 15px;
-  background-color: #ffdddd;
+  background-color: #ddd;
   padding: 10px;
   border-radius: 5px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
@@ -227,7 +228,7 @@ body { /* */
   top: 10px;
   right: 10px;
   font-size: 15px;
-  background-color: #ffdddd;
+  background-color: #ddd;
   padding: 10px;
   border-radius: 5px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);

@@ -119,7 +119,7 @@ document.querySelectorAll('.submenu').forEach(submenu => {
   }
   document.getElementById('menuOpen').addEventListener('click', function(){
     const menu =document.getElementById('menu');
-    menu.style.display = 'flex';
+    menu.style.display = menu.style.display === 'none' ? 'flex' : 'none';
   }); 
   
   
