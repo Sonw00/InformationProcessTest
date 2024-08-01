@@ -114,11 +114,11 @@ document.querySelectorAll('.submenu').forEach(submenu => {
     document.getElementById('correctAnswer' + questionNumber).textContent = '';
     document.getElementById('answerResult' + questionNumber).style.display = 'none';
   }
-  
+
   function changePageToMain() {
     var loggedInUser = JSON.parse(sessionStorage.getItem('loggedInUser'));
-    console.log("로그인아이디 : "+loggedInUser.id);
-    if(loggedInUser.id){location.href = 'login.html';
+    //console.log("로그인아이디 : "+loggedInUser.id);
+    if(loggedInUser && loggedInUser.id){location.href = 'login.html';
 
     } else { location.href = 'project.html';
 

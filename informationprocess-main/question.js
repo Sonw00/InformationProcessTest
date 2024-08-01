@@ -26,7 +26,7 @@ var Questions = {
                 }
             }
 
-        `,"answer":['10\n11\n10\n20'],
+        `,"answer":['10<br>11<br>10<br>20'],
         "type":'java'
             },
         {"name":'문제 2: 아래 자바 코드에서 출력되는 값을 작성하시오.',
@@ -227,7 +227,7 @@ int main() {
 
                     <tr>
                         <th style="width:100px;">구분</th>
-                        <th style="max-width: 100px;">내용</th>
+                        <th style="max-width: 10px;">내용</th>
                     </tr>
                 </thead>
                 <tbody>
