@@ -1,5 +1,36 @@
 
 var Questions = {
+    "20201": [
+        
+    ],
+    "20202": [
+        
+    ],
+    "20203": [
+        
+    ],
+    "20204": [
+        
+    ],
+    "20211": [
+        
+    ],
+    "20212": [
+        
+    ],
+    "20213": [
+        
+    ],
+    "20221": [
+        
+    ],
+    "20222": [
+        
+    ],
+    "20223": [
+        
+    ],
+
     "20231": [
         {"name":'문제 1: 아래 자바 코드에서 출력되는 값을 작성하시오.',
             "code": `\n\n 
@@ -26,7 +57,7 @@ var Questions = {
                 }
             }
 
-        `,"answer":['10<br>11<br>10<br>20'],
+        `,"answer_exact":['10\n11\n10\n20'],
         "type":'java'
             },
         {"name":'문제 2: 아래 자바 코드에서 출력되는 값을 작성하시오.',
@@ -54,7 +85,7 @@ var Questions = {
                 }
             }
 
-        `,"answer":['art\na\na\nart\nart'],
+        `,"answer_exact":['art\na\naart\nart'],
         "type":'java'
 
             },
@@ -80,7 +111,7 @@ var Questions = {
             Colored
 
         `,
-        "answer":['qwe'],
+        "answer_exact":['qwe'],
         "type":'c'
             },
         {"name":'문제 4: 다음 괄호안에 들어가는 용어의 Full Name 또는 약자를 작성하시오.',
@@ -89,7 +120,8 @@ var Questions = {
                 <br>(   )은/는 필요한 데이터만을 웹서버에 요청해서 받은 후 클라이언트에서 데이터에 대한 처리를 할 수 있다. 
                 <br> 보통 SOAP이나 XML 기반의 웹 서비스 프로토콜이 사용되며, 웹 서버의 응답을 처리하기 위해 클라이언트 쪽에서는 자바스크립트를 쓴다.
                 <br>(   )은/는 Google Map과 Google pages에서 사용한 기술에 기반하여 제작되었다.</p></div>`,
-                'answer': ['ajax', 'asynchronous javascript and xml']
+                'answer': ['ajax', 'asynchronous javascript and xml'],
+                'type':'network'
             },
         {"name":'문제 5: 아래 내용을 확인하여 괄호 안에 용어를 표안에 알맞는 값을 작성하시오.',
             "table":`
@@ -118,7 +150,8 @@ var Questions = {
                             - 짧은 메시지의 패킷들을 전송할 때 효과적이고 재정렬 기능이 필요하다.</td>
                     </tr>
             `,
-            "answer":`가상회선 데이터그램`
+            "answer_and":['가상회선', '데이터그램'],
+            "type":'network'
             },
         {"name":'문제6: 아래 내용을 확인하여 알맞는 답을 작성하시오.',
             "div":`
@@ -128,7 +161,8 @@ var Questions = {
                 <br>
                 IPsec을 함께 사용하면 PPTP보다 훨씬 안전하지만 보안보다 익명화에 더 적합</p></div>
             `,
-            "answer":`l2tp`
+            "answer_exact":['l2tp'],
+            "type":'network'
             },
         {"name":'문제7: 아래 내용에서 괄호안에 알맞는 용어를 작성하시오.',
             "div":`
@@ -138,7 +172,8 @@ var Questions = {
                 <br>
                 (    )  기본적으로 포트는 22번이다.</p></div>
             `,
-            "answer":`ssh secure shell`
+            "answer":['ssh', 'secure shell'],
+            "type":'security'
 
         },
         {
@@ -174,7 +209,8 @@ var Questions = {
                     </td>
                 </tr>
             `,
-            "answer":`웜 트로이 목마 바이러스`
+            "answer":['웜' ,'트로이목마' ,'바이러스'],
+            "type":'security'
         },
         {
             "name": "문제 9. 다음 아래 코드에서 이진수를 십진수로 변환하는 코드에 대해 괄호 (a) (b)의 적합한 답을 작성하시오.",
@@ -204,19 +240,21 @@ int main() {
 }
 
         `,
-        "answer":`& 1`,
+        "answer_exact":['& 1'],
         "type":'c'
         },
         {
             "name": "10. 다음 보안 관련 설명으로 괄호안에 알맞는 용어를  작성하시오.",
             "div": '<div class="rounded-rectangle-box"><p> (    )은/는 TCP/IP에서 IP 패킷을 처리할 때 발생되는 문제를 알려주는 프로토콜이다.<br>(    ) 프로토콜은 보통 다른 호스트나 게이트웨이 와 연결된 네트웍에 문제가 있는지 확인하기 위한 목적으로 주로 사용된다.<br>(    ) 을/를 이용한 공격에는 (    ) Flooding가 있는데 ping 명령어를 통한 (     ) 패킷을 연속적으로 계속 보내어 서버의 요청에 응답으로 인한 다른작업을 하지 못하도록 하는 공격이다.</p></div>',
-            "answer":`icmp`
+            "answer_exact":['icmp'],
+            "type":'network'
         },
         {
             "name": "11. 다음은 디자인 패턴에 관한 설명이다. 설명에 내용에 알맞는 답을 고르시오. (생성/구조/행위 별로 표형태의 보기가 있습니다. ex: Builder, Bridge​  등)",
             
             "div": '<div class="rounded-rectangle-box;"><p> - 다른 무언가와 이어지는 인터페이스 역할을 하는 클래스를 의미한다.<br>- 실제 객체를 호출하면 행위를 중간에 가로채서 다른 동작을 수행하는 객체로 변경한다.<br>- 객체를 정교하게 제어해야 하거나 객체 참조가 필요한 경우 사용한다.<br>- 분리된 객체를 위임함으로써 대리 작업을 중간 단계에 삽입할 수도 있으며 분리된 객체를 동적으로 연결함으로써 객체의 실행 시점을 관리할 수도 있다.</p></div>',
-            "answer":`proxy`,
+            "answer":['proxy'],
+            "type":'software'
             
         },
         {
@@ -250,8 +288,8 @@ int main() {
                     </tr>
                 </tbody>
             `,
-            "answer":`튜플 릴레이션 인스턴스 카디널리티`,
-            "type":'db'
+            "answer":['튜플', '릴레이션' ,'인스턴스' ,'카디널리티'],
+            "type":'database'
         },
         {"name":'13. [학생] 테이블에서 학생 이름이 "민수"인 튜플을 삭제하는 쿼리를 작성하시오.',
             "table":`
@@ -289,8 +327,8 @@ int main() {
             "code":`<br>조건
 - 컬럼의 값이 문자열일 경우 작은 따움표 ('  ')를 표시하시오.
 - SQL 마지막에 세미콜론(;)은 표기하지 않아도 관계 없습니다.`,
-"answer":'delete from 학생 where 이름 = "민수";',
-"type":'db'
+"answer":['delete from 학생 where 이름 = "민수"'],
+"type":'database'
         },
         {"name":'14. 다음 코드에서 괄호안에 알맞는 값을 변수명으로 작성하시오.',
             "code":`<br>public class Sort {
@@ -321,7 +359,7 @@ int main() {
         }
     }
 }
-`, "answer":`idx2 nx`,
+`, "answer_and":['idx2', 'nx'],
 "type":'java'
             
         },
@@ -332,7 +370,7 @@ a.add('중국')
 a.remove('일본')
 a.update({'홍콩', '한국', '태국'})
 print(a)`,
-"answer":`{'한국', '중국', '베트남', '홍콩', '태국'}`,
+"answer_exact":`{'한국', '중국', '베트남', '홍콩', '태국'}`,
 "type":'python'
         },
         {"name":'16. 다음 표와 SQL의 결과를 확인하여 SQL을 작성하시오.',
@@ -377,17 +415,32 @@ print(a)`,
                         <td>85</td>
                     </tr>
                 </tbody>`,
-                "code":`결과<br>
-과목이름    최고점수    최대점수
-데이터베이스    89          92`,
-                "div":`<div class="rounded-rectangle-box"><p>조건: 
-- where사용하지 말하야 한다.
-- SELECT절에 별칭을 사용하여 작성해야 한다.
-- SQL 구문 마지막에 세미콜론 생락 가능하다.
-- 반드시 GROUP BY와 having을 사용해야 한다.
+                "code":`<div class="rounded-rectangle-box"><p>조건: 
+- where사용하지 말하야 한다.<br>
+- SELECT절에 별칭을 사용하여 작성해야 한다.<br>
+- SQL 구문 마지막에 세미콜론 생락 가능하다.<br>
+- 반드시 GROUP BY와 having을 사용해야 한다.<br>
 - 집계함수를 사용해야 한다.</p></div?`,
-"answer":`select 과목이름 ,min(점수) as 최소점수 , max(점수) as 최대점수 from 성적 group by 과목이름 having avg(점수)>=90`,
-"type":'db'
+                "div":`결과<br>
+                <table>
+                <thead>
+
+                    <tr>
+                        <th style="width:100px;">과목 이름</th>
+                        <th style="width:100px;">최고 점수</th>
+                        <th style="width:100px;">최대 점수</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>데이터베이스</td>
+                        <td>89</td>
+                        <td>92</td>
+                    </tr>
+                </tbody>
+                </table>`,
+"answer":['select 과목이름 ,min(점수) as 최소점수 , max(점수) as 최대점수 from 성적 group by 과목이름 having avg(점수)>=90'],
+"type":'database'
         },
         {"name":`17. 다음 JAVA 코드에서 알맞는 출력 값을 작성하시오.`,
             "code":`<br>abstact class Vehicle {
@@ -427,7 +480,7 @@ public class Main {
  
     }
 }
-`,"answer":`vehicle name: spark`,
+`,"answer_exact":['vehicle name: spark'],
 "type":'java'
         },
         {"name":`18. 다음은 스키마와 관련된 내용이다. 각 괄호안에 알맞는 답을 작성하시오.`,
@@ -468,12 +521,13 @@ public class Main {
                         </td>
                     </tr>
                 </tbody>`,
-                "answer":['외부 개념 내부'],
-                "type":'db'
+                "answer_and":['외부', '개념', '내부'],
+                "type":'database'
         },
         {"name":'19. 다음 아래 제어 흐름 그래프가 분기 커버리지를 만족하기 위한 테스팅 순서를 쓰시오.',
             "div":'<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbQZ756%2FbtscHlK9JMg%2Fp6HegekRsqNyGq0RKyJ8X1%2Fimg.png"/>',
-            "answer": `1234561, 124567  or 1234567, 124561`
+            "answer": ['1234561, 124567','1234567, 124561'],
+            "type":'software'
         },
         {"name":'20. 다음 자바 코드에 대한 출력 값을 작성하시오.',
             "code":`class Parent {
@@ -511,8 +565,148 @@ public class Main {
     }
 }
 `,
-            "answer":'500',
+            "answer_exact":['500'],
             "type":'java'
         }
-    ]
+    ],
+    "20232": [
+        {"name":'문제 1:다음은 C언어 코드의 문제이다. 보기의 조건에 맞도록 괄호안에 알맞은 코드를 작성하시오.',
+        "code":`\n\nint main(void) {
+ 
+    int n[5];
+    int i;
+ 
+    for (i = 0; i < 5; i++) {
+        printf("숫자를 입력해주세요 : ");
+        scanf("%d", &n[i]);
+    }
+ 
+    for (i = 0; i < 5; i++) {
+        printf("%d", (            ) );
+    }
+ 
+  return 0;
+ 
+}`,
+        "answer_exact":['n[(i+1) % 5]'],
+        "type":'c'
+    },
+        {"name":'문제 2: 다음은 JAVA 코드 문제이다. 가지고 있는 돈이 총 4620원일 경우 1000원, 500원, 100원, 10원의 지폐 및 동전을 이용하여 보기의 조건에 맞춰 최소한의 코드를 통해 괄호안을 작성하시오.',
+            "code":`\n\npublic class Problem{
+        public static void main(String[] args){
+        m = 4620;
+     
+        a = (              );
+        b = (              );
+        c = (              );
+        d = (              );
+     
+        System.out.println(a); //천원짜리     4장 출력
+        System.out.println(b); //오백원짜리  1개 출력
+        System.out.println(c); //백원짜리     1개 출력
+        System.out.println(d); //십원짜리     2개 출력
+        }
+    }`,
+            "answer":['m / 1000\n(m % 1000) / 500\n(m % 500) / 100\n(m % 100) / 10'],
+            "type":'java'
+        },{
+            "name":'',
+
+            "answer":[''],
+            "type":''
+        },{
+            "name":'',
+
+            "answer":[''],
+            "type":''
+        },{
+            "name":'',
+
+            "answer":[''],
+            "type":''
+        },{
+            "name":'',
+
+            "answer":[''],
+            "type":''
+        },{
+            "name":'',
+
+            "answer":[''],
+            "type":''
+        },{
+            "name":'',
+
+            "answer":[''],
+            "type":''
+        },{
+            "name":'',
+
+            "answer":[''],
+            "type":''
+        },{
+            "name":'',
+
+            "answer":[''],
+            "type":''
+        },{
+            "name":'',
+
+            "answer":[''],
+            "type":''
+        },{
+            "name":'',
+
+            "answer":[''],
+            "type":''
+        },{
+            "name":'',
+
+            "answer":[''],
+            "type":''
+        },{
+            "name":'',
+
+            "answer":[''],
+            "type":''
+        },{
+            "name":'',
+
+            "answer":[''],
+            "type":''
+        },{
+            "name":'',
+
+            "answer":[''],
+            "type":''
+        },{
+            "name":'',
+
+            "answer":[''],
+            "type":''
+        },{
+            "name":'',
+
+            "answer":[''],
+            "type":''
+        },{
+            "name":'',
+
+            "answer":[''],
+            "type":''
+        },{
+            "name":'',
+
+            "answer":[''],
+            "type":''
+        }
+    ],
+    "20233": [
+    ],
+    "20241": [
+        
+    ],
+    "20242": [
+        
+    ],
 };

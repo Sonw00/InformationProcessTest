@@ -5,14 +5,14 @@ const User = {
             "id": "thsdndud111",
             "pwd": "thsdndud1",
             "name": "손우영",
-            "birthDate": "980919",
+            "birthDate": "19980919",
             "email": "thsdndud121@naver.com"
         },
         {
             "id": "wjswlsvy000",
             "pwd": "wjswlsvy0",
             "name": "전진표",
-            "birthDate": "680715",
+            "birthDate": "19680715",
             "email": "wjswlsvy@google.com"
         },
         {
@@ -26,7 +26,7 @@ const User = {
             "id": "ghdwnsvy13",
             "pwd": "ghdwnsvy9",
             "name": "공준표",
-            "birthDate": "240722",
+            "birthDate": "19240722",
             "email": "kongjunp@nate.com"
         }
     ]

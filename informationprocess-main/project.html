@@ -56,6 +56,7 @@
             background-color: white;
             padding: 20px;
             border-radius: 10px;
+            border: 1px solid #e9e9e9;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             text-align: center;
             cursor: pointer;
@@ -135,6 +136,9 @@
             font-size: 18px;
             padding: 5px;
             margin-bottom: 10px;
+            
+            border-radius: 5px;
+            border: 1px solid #ccc;
         }
 
         input[type="email"] {
@@ -143,18 +147,39 @@
             font-size: 18px;
             padding: 5px;
             margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        input[type="submit"]{
+            
+            font-size: 16px;
+            padding : 5px;
+            cursor: pointer;
+            border-color: #e9e9e9;
+            border-width: 2px;
+            border-radius: 5px;
+            background-color: #f0f0f0;
+            color: black;
+
+        }
+        input[type="submit"]:hover{
+            background-color: #ccc; 
         }
 
         button {
             padding: 10px 20px;
             font-size: 16px;
             cursor: pointer;
-            border: none;
+            border-color: #e9e9e9;
+            border-width: 2px;
             border-radius: 5px;
             background-color: #f0f0f0;
             color: black;
             margin-right: 10px;
             margin-bottom: 20px;
+        }
+        button:hover{
+            background-color: #ccc; 
         }
 
         a {
@@ -183,6 +208,22 @@
             color: blue;
             transition: color 0.3s, font-weight 0.3s;
         }
+        
+        .InputButton {
+            
+            width: 100%;
+            border: none;
+            font-size: 16px;
+            padding : 5px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #f0f0f0;
+            color: black;
+        }
+        .InputButton:hover{
+            background-color: #ccc; 
+        }
 
         .top-right {
             position: absolute;
@@ -198,8 +239,8 @@
             display: none;
             background-color: #fff;
             padding: 20px;
-            border: 1px solid #ddd;
             border-radius: 10px;
+            border: 1px solid #e9e9e9;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             margin-top: 10px;
             z-index: 2;
@@ -209,7 +250,7 @@
             display: none;
             background-color: #fff;
             padding: 20px;
-            border: 1px solid #ddd;
+            border: 1px solid #e9e9e9;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             margin-top: 40px;
@@ -268,7 +309,7 @@
                 <label for="remember-check">
                     <input type="checkbox" id="remember-check">아이디 저장하기
                 </label>
-                <input style="font-size: 16px; margin: 10px;" type="submit" value="Login" onclick="login(event)">
+                <input class="inputButton" type="submit" value="Login" onclick="login(event)">
                 <a id="join" style="float: right; margin: 10px;" href="javascript:void(0);">회원가입</a>
             </form>
         </div>
@@ -320,7 +361,7 @@
                     <td>생년월일</td>
                 </tr>
                 <tr>
-                    <td><input type="date" class="text" id="joinBirthDate"></td>
+                    <td><input type="date" class="text" id="joinBirthDate" min="1000-01-01" max="9999-12-31"></td>
                 </tr>
                 <tr>
                     <td>이메일</td>
@@ -435,6 +476,7 @@
     const loginMenu = document.getElementById('loginMenu');
     const joinMenu = document.getElementById('joinMenu');
 
+    let joinBirthDateText;
     const joinClose = document.getElementById('joinClose')
 
     
@@ -456,6 +498,17 @@
 // }
 //     }
 
+document.getElementById('joinBirthDate').addEventListener('input', function(e) {
+  let joinBirthDate = new Date(this.value);
+  let year = joinBirthDate.getFullYear();
+        let month = ('0' + (joinBirthDate.getMonth() + 1)).slice(-2); // 월은 0부터 시작하므로 +1
+        let day = ('0' + joinBirthDate.getDate()).slice(-2);
+        joinBirthDateText = `${year}${month}${day}`;
+
+        console.log(`Year: ${year}, Month: ${month}, Day: ${day}`);
+});
+ 
+
 
 
     function join() {
@@ -463,7 +516,6 @@
         const joinPwd = document.getElementById('joinPwd').value;
         const joinPwdChk = document.getElementById('joinPwdChk').value;
         const joinName = document.getElementById('joinName').value;
-        const joinBirthDate = document.getElementById('joinBirthDate').value;
         const joinEmail = document.getElementById('email-select').value === "선택"
          ? document.getElementById('joinEmail').value 
          : document.getElementById('joinEmail').value + '@' + document.getElementById('email-select').value;
@@ -516,7 +568,7 @@
                 id: joinId,
                 pwd: joinPwd,
                 name: joinName,
-                birthDate: joinBirthDate,
+                birthDate: joinBirthDateText,
                 email: joinEmail
             });
 

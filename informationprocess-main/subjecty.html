@@ -34,8 +34,8 @@
         <p><br></p>
 
         <div class="mainmenu" id="2020년 4회">
-            <a href='javascript:void(0);' onclick="loadSubjectQuestionSet('database','20231','0')" class="mainmenu"
-                id="database_menu">[DATA BASE] 기출문제</a>
+            <a href='javascript:void(0);' onclick="loadSubjectQuestionSet('db','20231','0')" class="mainmenu"
+                id="database_menu">[데이터베이스] 기출문제</a>
         </div>
 
         <p><br></p>
@@ -59,12 +59,12 @@
             <div id="question1">
                 <p id="questionName1"></p>
                 <table id="questionTable1"></table>
+                <pre style="display: none;">
+                <code id="code1">
+                </code>
+        </pre>
                 <div id="divBox1">
                 </div>
-                <pre style="display: none;">
-                    <code id="code1">
-                    </code>
-                </pre>
                 <textarea id="answer1" rows="3" cols="50"></textarea>
             </div>
             <button id="checkAnswer1">정답 확인</button>
@@ -76,12 +76,12 @@
             <div id="question2">
                 <p id="questionName2"></p>
                 <table id="questionTable2"></table>
-                <div id="divBox2">
-                </div>
                 <pre style="display: none;">
                 <code id="code2">
                 </code>
             </pre>
+                <div id="divBox2">
+                </div>
 
                 <textarea id="answer2" rows="3" cols="50"></textarea>
             </div>
@@ -94,13 +94,13 @@
             <div id="question3">
                 <p id="questionName3"></p>
                 <table id="questionTable3"></table>
-                <div id="divBox3">
-                </div>
                 <pre style="display: none;">
                 <code id="code3">
                 </code>
             </pre>
 
+                <div id="divBox3">
+                </div>
                 <textarea id="answer3" rows="3" cols="50"></textarea>
             </div>
             <button id="checkAnswer3">정답 확인</button>
@@ -112,12 +112,12 @@
             <div id="question4">
                 <p id="questionName4"></p>
                 <table id="questionTable4"></table>
-                <div id="divBox4">
-                </div>
                 <pre style="display: none;">
                 <code id="code4">
                 </code>
             </pre>
+                <div id="divBox4">
+                </div>
 
                 <textarea id="answer4" rows="3" cols="50"></textarea>
             </div>
@@ -126,7 +126,6 @@
             <div id="answerResult4">
                 <p id="correctAnswer4"></p>
             </div>
-            <br>
 
 
             <button id="prevPage">이전</button>
@@ -145,112 +144,97 @@
             let currentSubject = '0';
             const header = document.querySelector("h1");
             const pages = document.querySelectorAll('.page');
-            
+
             let n;
 
 
             document.getElementById('nextPage').addEventListener('click', () => {
-                
-                loadSubjectQuestionSet(currentSubject,currentPage, nextQuestionNumber);
+
+                loadSubjectQuestionSet(currentSubject, currentPage, nextQuestionNumber);
                 window.scrollTo(0, 0); // 페이지 전환 시 맨 위로 스크롤
 
 
             });
             document.getElementById('prevPage').addEventListener('click', () => {
-                console.log('버튼 작동여부'+firstQuestionNumber);
+                console.log('이전 버튼 작동 여부: ' + firstQuestionNumber);
+
                 const prevPageInfo = searchPrevPageNum(firstQuestionNumber);
-                console.log('searchPrevPageNum 리턴값 : '+prevPageInfo.keyprevPage +'+'+prevPageInfo.keyPrevNum);
-                if(prevPageInfo){
-                    prevPage = prevPageInfo.keyprevPage;
+
+                if (prevPageInfo) {
+                    const prevPage = prevPageInfo.keyprevPage;
                     const prevQuestionNum = prevPageInfo.keyPrevNum;
+                    console.log('이전 페이지 정보: ' + prevPage + ' | 이전 문제 번호: ' + prevQuestionNum);
+
                     loadSubjectQuestionSet(currentSubject, prevPage, prevQuestionNum);
                     window.scrollTo(0, 0); // 페이지 상단으로 스크롤
                 } else {
                     alert("이전 페이지가 없습니다.");
                 }
-                // if(parseInt(firstQuestionNumber) <4){
-                //     loadSubjectQuestionSet(currentSubject,prevPage,(firstQuestionNumber+16).toString)
-                // }else{
-                //     loadSubjectQuestionSet(currentSubject,currentPage,nextQuestionNumber);
-                // }
-                
-                //     window.scrollTo(0, 0); // 페이지 전환 시 맨 위로 스크롤
+                console.log('searchPrevPageNum 리턴값 : ' + prevPageInfo.keyprevPage + '+' + prevPageInfo.keyPrevNum);
 
-                
             });
-            function searchPrevPageNum(firstNum){
-                let searchingPrevQuestionNum = parseInt(firstNum) - 1; //검색 시작할 문제 번호
-                let searchingCurrentPage = currentPage;             // 현재페이지 지역변수저장
-                console.log('검색 시작할 문제번호'+searchingPrevQuestionNum);  
-                let n=0;        // 찾아낸 문제 수
-                prevPage = returnPrevPage(searchingCurrentPage);    // 이전 페이지 저장
-                let questions =Questions[searchingCurrentPage];     // 문제 데이터 뭉텅이
-                while(n<=4){        // 문제 4개 찾을 때까지
-                    if(searchingPrevQuestionNum<0){         //문제번호가 0 이하일 때
+            function searchPrevPageNum(firstNum) {
+                let searchingPrevQuestionNum = parseInt(firstNum) - 1; // 검색 시작할 문제 번호
+                let searchingCurrentPage = currentPage; // 현재 페이지를 지역 변수로 저장
 
-                        if(Questions.hasOwnProperty(prevPage)){ // 이전회차 문제 존재 검사
+                console.log('검색 시작할 문제 번호: ' + searchingPrevQuestionNum);
+
+                let n = 0; // 찾은 문제 수
+                let prevPage = returnPrevPage(searchingCurrentPage); // 이전 페이지 저장
+                let questions = Questions[searchingCurrentPage]; // 현재 페이지의 문제 데이터
+
+                while (n < 4) { // 문제 4개를 찾을 때까지 반복
+                    if (searchingPrevQuestionNum < 0) { // 문제 번호가 0 이하일 때
+                        if (Questions.hasOwnProperty(prevPage)) { // 이전 회차 문제가 존재하는지 검사
                             questions = Questions[prevPage];
-                            console.log('이동할 이전페이지:'+prevPage+questions.name);
-                            searchingPrevQuestionNum = questions.length-1;
-                            console.log('questions has own property'+questions.hasOwnProperty(name));
-                            if(questions.hasOwnProperty(name)&&questions[searchingPrevQuestionNum].type === currentSubject){
-                                n++;
-                            }else {break;}
-                        }else {break;}
+                            console.log('이동할 이전 페이지: ' + prevPage + ' | 문제 수: ' + questions.length);
+
+                            searchingPrevQuestionNum = questions.length - 1; // 마지막 문제로 이동
+                        } else {
+                            break;
+                        }
                     } else {
-                        if(questions[searchingPrevQuestionNum].type === currentSubject){
-                            console.log('확인 : '+questions[searchingPrevQuestionNum].name);
-                                n++;
-                            }
-                    };
-                    
-                    
-                    searchingPrevQuestionNum-=1;
-                    console.log('')
+                        if (questions[searchingPrevQuestionNum].type === currentSubject) {
+                            n++;
+                        }
+                    }
+                    searchingPrevQuestionNum--;
                 }
-                console.log('prevPage : '+prevPage+', searchingPrevQuestionNum : '+searchingPrevQuestionNum);
+
                 return {
-                keyprevPage: prevPage,
-                keyPrevNum: searchingPrevQuestionNum + 1
-            };
+                    keyprevPage: prevPage,
+                    keyPrevNum: searchingPrevQuestionNum + 1
+                };
             }
 
             function loadSubjectQuestionSet(type, page, i) {
-                console.log('loadSubjectQuestionSet 함수 실행/ 과목:'+type+', 회차 : '+page+', 시작문제번호 : '+i);
                 firstQuestionNumber = i;
                 currentPage = page;
                 currentSubject = type;
                 let year = page.slice(0, 4);
                 let lastDigit = page.slice(4);
                 const questions = Questions[page];
-                console.log(questions);
                 if (type === 'c') header.textContent = '[C언어] 정보처리기사 기출문제';
                 else if (type === 'java') header.textContent = '[JAVA] 정보처리기사 기출문제';
                 else if (type === 'python') header.textContent = '[PYTHON] 정보처리기사 기출문제';
-                else if (type === 'database') header.textContent = '[DATA BASE] 정보처리기사 기출문제';
+                else if (type === 'db') header.textContent = '[DATA BASE] 정보처리기사 기출문제';
                 else if (!type) header.textContent = '정보처리기사 기출문제';
                 else header.textContent = '[' + type + '] 정보처리기사 기출문제';
 
 
+
+                // 모든 questionName, questionTable, code, question pre, divBox 초기화
                 for (let j = 1; j <= 4; j++) {
-                    // document.getElementById(`questionName${j}`).innerHTML = '';
-                    // document.getElementById(`questionTable${j}`).innerHTML = '';
-                    // document.getElementById(`code${j}`).innerHTML = '';
-                    // document.querySelector(`#question${j} pre`).style.display = 'none';
-                    // document.getElementById(`divBox${j}`).innerHTML = '';
-                    
-                    const correctAnswerElement = document.getElementById('correctAnswer' + j);
-                    const answerResultElement = document.getElementById('answerResult' + j);
-                    const answerTextarea = document.getElementById('answer'+j)
-                    correctAnswerElement.textContent = '';
-                    answerTextarea.value = '';
-                    answerResultElement.style.display = 'none';
+                    document.getElementById(`questionName${j}`).innerHTML = '';
+                    document.getElementById(`questionTable${j}`).innerHTML = '';
+                    document.getElementById(`code${j}`).innerHTML = '';
+                    document.querySelector(`#question${j} pre`).style.display = 'none';
+                    document.getElementById(`divBox${j}`).innerHTML = '';
                 }
-                console.log('n:'+n)
+
                 while (i < questions.length && n < 4) {
-                    console.log(questions[i].type);
                     if (questions[i].type === type) {
-                        if(questions[i].hasOwnProperty)console.log('hasOwnProperty : '+ questions[i].name);
+                        if (questions[i].hasOwnProperty) console.log('hasOwnProperty : ' + questions[i].name);
                         console.log("Question " + (n + 1) + " Answer:", questions[i].answer);
 
                         document.getElementById(`questionName${n + 1}`).innerHTML = '[' + year + '년 ' + lastDigit + '회] ' + questions[i].name || '';
@@ -262,14 +246,7 @@
                         let index = n + 1;
                         let question = questions[i];
                         document.getElementById(`checkAnswer${index}`).addEventListener('click', function () {
-                            if(question.hasOwnProperty('answer_and')){
-                                checkAnswer_and(index,question.answer_and)
-                            } else if(question.hasOwnProperty('answer_exact')){
-                                checkAnswer_exact(index,question.answer_exact)
-                            }
-                            else {
                             checkAnswer(index, question.answer);
-                            }
                         });
                         document.getElementById(`eraseAnswer${index}`).addEventListener('click', function () {
                             eraseAnswer(index);
@@ -280,8 +257,8 @@
                     i++;
                     nextQuestionNumber = i;
                     //console.log('hasOwnProperty : '+ questions.hasOwnProperty(name));
-                    if (n >= 4 || questions.hasOwnProperty('name')) {
-                        console.log('문제출력 종료 전 다음 페이지 시작번호 출력'+nextQuestionNumber);
+                    if (n >= 4 || questions.hasOwnProperty(name)) {
+                        console.log('문제출력 종료 전 다음 페이지 시작번호 출력' + nextQuestionNumber);
                         break;
                     }
                 }
@@ -297,23 +274,22 @@
                     }
                 }
 
-                if (n < 4 && i >= questions.length ) {
+                if (n < 4 && i >= questions.length) {
                     nextPage = returnNextPage(currentPage);
-                    console.log('현재 페이지 : '+ currentPage+'다음페이지 : '+nextPage)
+                    console.log('현재 페이지 : ' + currentPage + '다음페이지 : ' + nextPage)
                     if (Questions.hasOwnProperty(nextPage)) {
-                        console.log('다음페이지가 존재하는지 : ' +Questions.hasOwnProperty(nextPage)+ ', 다음문제번호 : '+nextQuestionNumber);
-                        loadSubjectQuestionSet(type, nextPage, '0');
-                    } else {console.log("다음 회차가 존재하지 않습니다");};
+                        console.log('다음페이지가 존재하는지 : ' + Questions.hasOwnProperty(nextPage) + ', 다음문제번호 : ' + nextQuestionNumber);
+                        //loadSubjectQuestionSet(type, nextPage, '0');
+                    } else { console.log("다음 회차가 존재하지 않습니다"); };
                 }
-                
-                n=0;
+
+                n = 0;
             }
 
 
             let count = sessionStorage.getItem("count");; // count 받아옴
 
             function checkAnswer(questionNumber, correctAnswer) {
-                console.log('checkAnswer 실행');
                 const userAnswer = document.getElementById('answer' + questionNumber).value.trim().toLowerCase();
                 const correctAnswerElement = document.getElementById('correctAnswer' + questionNumber);
                 const answerResultElement = document.getElementById('answerResult' + questionNumber);
@@ -342,8 +318,6 @@
 
             }
             function checkAnswer_and(questionNumber, correctAnswer) {
-                
-                console.log('checkAnswer_and 실행');
                 const userAnswer = document.getElementById('answer' + questionNumber).value.trim().toLowerCase();
                 const correctAnswerElement = document.getElementById('correctAnswer' + questionNumber);
                 const answerResultElement = document.getElementById('answerResult' + questionNumber);
@@ -373,7 +347,6 @@
             }
 
             function checkAnswer_exact(questionNumber, correctAnswer) {
-                console.log('checkAnswer_exact 실행 correctAnswer : '+ correctAnswer);
                 const userAnswer = document.getElementById('answer' + questionNumber).value.trim();
                 const correctAnswerElement = document.getElementById('correctAnswer' + questionNumber);
                 const answerResultElement = document.getElementById('answerResult' + questionNumber);
@@ -451,7 +424,7 @@
                 return result;
             }
             document.addEventListener('DOMContentLoaded', function () {
-                
+
                 totalTime = sessionStorage.getItem("totalTime");
                 totalTime = totalTime ? parseInt(totalTime, 10) : 0;
 
@@ -465,8 +438,6 @@
                     console.log(queryResult.year); // "2023"
                     console.log(queryResult.lastDigit); // "1"
                     console.log(queryResult.questionNumber); // "5"
-                    
-                    n=0;
                     loadSubjectQuestionSet(queryResult.variable, queryResult.year + queryResult.lastDigit, queryResult.questionNumber);
                 } else {
                     console.log("No query parameters found");
@@ -503,47 +474,47 @@
                     });
                 });
 
-                
-                
+
+
 
             });
 
-            function returnPrevPage(currentPage){
-                
+            function returnPrevPage(currentPage) {
+
                 let prevPage;
-                if(currentPage === '20241'){
-                        prevPage = '20233'
-                    } else if(currentPage === '20231'){
-                        prevPage = '20223'
-                    } else if(currentPage === '20221'){
-                        prevPage = '20213'
-                    } else if(currentPage === '20211'){
-                        prevPage = '20204'
-                    } else if(currentPage === '20201'){
-                        prevPage = '20242'
-                    }else {
-                        prevPage = (parseInt(currentPage) - 1).toString();
-                    }
-                    return prevPage;
+                if (currentPage === '20241') {
+                    prevPage = '20233'
+                } else if (currentPage === '20231') {
+                    prevPage = '20223'
+                } else if (currentPage === '20221') {
+                    prevPage = '20213'
+                } else if (currentPage === '20211') {
+                    prevPage = '20204'
+                } else if (currentPage === '20201') {
+                    prevPage = '20242'
+                } else {
+                    prevPage = (parseInt(currentPage) - 1).toString();
+                }
+                return prevPage;
             };
-            function returnNextPage(currentPage){
+            function returnNextPage(currentPage) {
                 let nextPage;
-                if(currentPage === '20204'){
-                        nextPage = '20211'
-                    } else if(currentPage === '20213'){
-                        nextPage = '20221'
-                    } else if(currentPage === '20223'){
-                        nextPage = '20231'
-                    } else if(currentPage === '20233'){
-                        nextPage = '20241'
-                    } else if(currentPage === '20242'){
-                        nextPage = '20201'
-                    }
-                    else {
-                        nextPage = (parseInt(currentPage) +1).toString();
-                    }
-                    console.log("return nextPage : "+nextPage);
-                    return nextPage;
+                if (currentPage === '20204') {
+                    nextPage = '20211'
+                } else if (currentPage === '20213') {
+                    nextPage = '20221'
+                } else if (currentPage === '20223') {
+                    nextPage = '20231'
+                } else if (currentPage === '20233') {
+                    nextPage = '20241'
+                } else if (currentPage === '20242') {
+                    nextPage = '20201'
+                }
+                else {
+                    nextPage = (parseInt(currentPage) + 1).toString();
+                }
+                console.log("return nextPage : " + nextPage);
+                return nextPage;
             };
 
             function updateTimer() {

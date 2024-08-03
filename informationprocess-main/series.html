@@ -16,7 +16,7 @@
 
         <p><br></p>
         <div class="mainmenu" id="2020년">
-            <a href='#2020_1_1.html' class="mainmenu" id="2020년">[2020년 기출문제]</a>
+            <a href='javascript:void(0);' class="mainmenu" id="2020년">[2020년 기출문제]</a>
         </div>
         <div class="submenu">
             <a href="javascript:void(0);" onclick="loadSeriesQuestionSet('20201','0')" id="menu1">[2020년 1회 기출]</a>
@@ -28,37 +28,43 @@
 
 
         <div class="mainmenu" id="2021년">
-            <a href='#2021_1_1.html' class="mainmenu" id="2021년">[2021년 기출문제]</a>
+            <a href='javascript:void(0);' class="mainmenu" id="2021년">[2021년 기출문제]</a>
         </div>
         <div class="submenu">
             <a href="" onclick="loadSeriesQuestionSet('20211','0')" id="menu5">[2021년 1회 기출]</a>
             <a href="javascript:void(0);" onclick="loadSeriesQuestionSet('20221','0')" id="menu5">[2021년 1회 기출]</a>
             <a href="javascript:void(0);" onclick="loadSeriesQuestionSet('20222','0')" id="menu6">[2021년 2회 기출]</a>
             <a href="javascript:void(0);" onclick="loadSeriesQuestionSet('20213','0')" id="menu7">[2021년 3회 기출]</a>
-            <a href="javascript:void(0);" onclick="loadSeriesQuestionSet('20214','0')" id="menu8">[2021년 4회 기출]</a>
         </div>
         <p><br></p>
 
         <div class="mainmenu" id="2022년">
-            <a href='#2022_1_1.html' class="mainmenu" id="2022년">[2022년 기출문제]</a>
+            <a href='javascript:void(0);' class="mainmenu" id="2022년">[2022년 기출문제]</a>
         </div>
         <div class="submenu">
             <a href="javascript:void(0);" onclick="loadSeriesQuestionSet('20221','0')" id="menu9">[2022년 1회 기출]</a>
             <a href="javascript:void(0);" onclick="loadSeriesQuestionSet('20222','0')" id="menu10">[2022년 2회 기출]</a>
             <a href="javascript:void(0);" onclick="loadSeriesQuestionSet('20223','0')" id="menu11">[2022년 3회 기출]</a>
-            <a href="javascript:void(0);" onclick="loadSeriesQuestionSet('20224','0')" id="menu12">[2022년 4회 기출]</a>
         </div>
         <p><br></p>
 
 
         <div class="mainmenu" id="2023년">
-            <a href='#2023_1_1.html' class="mainmenu" id="2023년">[2023년 기출문제]</a>
+            <a href='javascript:void(0);' class="mainmenu" id="2023년">[2023년 기출문제]</a>
         </div>
         <div class="submenu">
             <a href="javascript:void(0);" onclick="loadSeriesQuestionSet('20231','0')" id="menu13">[2023년 1회 기출]</a>
             <a href="javascript:void(0);" onclick="loadSeriesQuestionSet('20232','0')" id="menu14">[2023년 2회 기출]</a>
             <a href="javascript:void(0);" onclick="loadSeriesQuestionSet('20233','0')" id="menu15">[2023년 3회 기출]</a>
-            <a href="javascript:void(0);" onclick="loadSeriesQuestionSet('20234','0')" id="menu16">[2023년 4회 기출]</a>
+        </div>
+        <p><br></p>
+
+        <div class="mainmenu" id="2024년">
+            <a href='javascript:void(0);' class="mainmenu" id="2024년">[2024년 기출문제]</a>
+        </div>
+        <div class="submenu">
+            <a href="javascript:void(0);" onclick="loadSeriesQuestionSet('20241','0')" id="menu13">[2024년 1회 기출]</a>
+            <a href="javascript:void(0);" onclick="loadSeriesQuestionSet('20242','0')" id="menu14">[2024년 2회 기출]</a>
         </div>
         <p><br></p>
 
@@ -152,45 +158,56 @@
 
             <button id="prevPage" style="display: none;">이전</button>
             <button id="nextPage">다음</button>
+            <button color = red id="submit" style="display:none">제출</button>
 
         </div>
         <script src="information.js"></script>
         <script src="question.js"></script>
         <script>
             let firstQuestionNumber = '0';
-            let lastQuestionNumber = '0';
+            let nextQuestionNumber = '0';
             let currentPage = '0';
             let year = '0';
             let lastDigit = '0';
-            let n = 0;
+            let n;
 
             const header = document.querySelector("h1");
             const pages = document.querySelectorAll('.page');
+            const prevPage = document.getElementById('prevPage');
+            const nextPage = getElementById('nextPage');
 
 
-            document.getElementById('nextPage').addEventListener('click', () => {
+            nextPage.addEventListener('click', () => {
 
-                loadSeriesQuestionSet(currentPage, lastQuestionNumber);
+                loadSeriesQuestionSet(currentPage, nextQuestionNumber);
                 window.scrollTo(0, 0); // 페이지 전환 시 맨 위로 스크롤
 
 
             });
-            document.getElementById('prevPage').addEventListener('click', () => {
-                if (firstQuestionNumber <= 4) {
-                    pages[currentPage].classList.remove('active');
-                    pages[currentPage].classList.add('active');
-                    window.scrollTo(0, 0); // 페이지 전환 시 맨 위로 스크롤
-
-                }
+            prevPage.addEventListener('click', () => {
+                // if (firstQuestionNumber <= 4) {
+                //     pages[currentPage].classList.remove('active');
+                //     pages[currentPage].classList.add('active');
+                //     window.scrollTo(0, 0); // 페이지 전환 시 맨 위로 스크롤
+                // }
+                loadSeriesQuestionSet(currentPage,(firstQuestionNumber-4).toString);
+                window.scrollTo(0, 0); // 페이지 전환 시 맨 위로 스크롤
             });
             function loadSeriesQuestionSet(page, i) {
-                currentPage = page;
+                n=0;
                 firstQuestionNumber = i;
+                currentPage = page;
                 let year = page.slice(0, 4);
                 let lastDigit = page.slice(4);
                 const questions = Questions[page];
                 if (page) header.textContent = '[' + year + '년 ' + lastDigit + '회] 정보처리기사 기출문제';
                 else header.textContent = '정보처리기사 기출문제';
+
+                if(i==0){
+                    prevPage.style.display = 'none';
+                }else{
+                    prevPage.style.display = 'block';
+                }
 
                 for (let j = 1; j <= 4; j++) {
                     document.getElementById(`questionName${j}`).innerHTML = '';
@@ -235,76 +252,12 @@
                         document.getElementById(`divBox${j}`).innerHTML = '';
                     }
                 }
-
+                
+                n=0;
 
 
             }
 
-            function loadSubjectQuestionSet(type, page, i) {
-                let year = page.slice(0, 4);
-                let lastDigit = page.slice(4);
-                const questions = Questions[page];
-
-                let n = 0;
-
-                // 모든 questionName, questionTable, code, question pre, divBox 초기화
-                for (let j = 1; j <= 4; j++) {
-                    document.getElementById(`questionName${j}`).innerHTML = '';
-                    document.getElementById(`questionTable${j}`).innerHTML = '';
-                    document.getElementById(`code${j}`).innerHTML = '';
-                    document.querySelector(`#question${j} pre`).style.display = 'none';
-                    document.getElementById(`divBox${j}`).innerHTML = '';
-                }
-
-                while (i < questions.length && n < 4) {
-                    if (questions[i].type === type) {
-                        console.log("Question " + (n + 1) + " Answer:", questions[i].answer);
-
-                        document.getElementById(`questionName${n + 1}`).innerHTML = '[' + year + '년 ' + lastDigit + '회] ' + questions[i].name || '';
-                        document.getElementById(`questionTable${n + 1}`).innerHTML = questions[i].table || '';
-                        document.getElementById(`code${n + 1}`).innerHTML = questions[i].code || '';
-                        document.querySelector(`#question${n + 1} pre`).style.display = questions[i].code ? 'block' : 'none';
-                        document.getElementById(`divBox${n + 1}`).innerHTML = questions[i].div || '';
-
-                        let index = n + 1;
-                        let question = questions[i];
-                        document.getElementById(`checkAnswer${index}`).addEventListener('click', function () {
-                            checkAnswer(index, question.answer);
-                        });
-                        document.getElementById(`eraseAnswer${index}`).addEventListener('click', function () {
-                            eraseAnswer(index);
-                        });
-
-                        n++;
-                    }
-                    i++;
-                    if (n >= 4) {
-                        lastQuestionNumber = page + i;
-                        console.log(lastQuestionNumber);
-                        break;
-                    }
-                }
-
-                // 나머지 문제 영역을 비우기
-                if (n < 4) {
-                    for (let j = n + 1; j <= 4; j++) {
-                        document.getElementById(`questionName${j}`).innerHTML = '';
-                        document.getElementById(`questionTable${j}`).innerHTML = '';
-                        document.getElementById(`code${j}`).innerHTML = '';
-                        document.querySelector(`#question${j} pre`).style.display = 'none';
-                        document.getElementById(`divBox${j}`).innerHTML = '';
-                    }
-                }
-
-                // if (n < 4 && i >= questions.length - 1) {
-                //     const prevPage = (parseInt(page) - 1).toString();
-                //     if (Questions.hasOwnProperty(prevPage)) {
-
-                //         console.log(Questions.hasOwnProperty(prevPage));
-                //         loadSubjectQuestionSet(type, prevPage, 0);
-                //     }
-                // }
-            }
 
 
             let count = sessionStorage.getItem("count");; // count 받아옴
@@ -447,20 +400,16 @@
                 totalTime = sessionStorage.getItem("totalTime");
                 totalTime = totalTime ? parseInt(totalTime, 10) : 0;
 
-                var subject = getQueryVariable("subject");
-                console.log("Subject:", subject); // 여기서 subject 변수에 접근하여 사용 가능합니다.
-
-                var queryResult = getQueryVariables('variable', 'year', 'lastDigit', 'questionNumber');
+                var queryResult = getQueryVariables('year', 'lastDigit', 'questionNumber');
                 // 결과 출력
                 if (queryResult.variable) {
-                    console.log(queryResult.variable); // "value1"
                     console.log(queryResult.year); // "2023"
                     console.log(queryResult.lastDigit); // "1"
                     console.log(queryResult.questionNumber); // "5"
-                    loadSubjectQuestionSet(queryResult.variable, queryResult.year + queryResult.lastDigit, queryResult.questionNumber);
+                    loadSeriesQuestionSet(queryResult.year + queryResult.lastDigit, queryResult.questionNumber);
                 } else {
                     console.log("No query parameters found");
-                    loadSubjectQuestionSet(subject, '20231', '0');
+                    loadSeriesQuestionSet('20231', '0');
                 }
                 // 타이머 설정
 
