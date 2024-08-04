@@ -382,7 +382,7 @@
     <div id="userInformMenu" class="center draggable">
         <br>
         <h2>회원정보</h2>
-        <form action="/update-profile" method="POST">
+        <form action="" method="">
 
 
             <div class="gender-container" style="display: flex;">
@@ -447,7 +447,7 @@
                 <input type="password" id="confirm_new_password" name="confirm_new_password" required>
             </div>
             
-            <input type="submit" value="정보 수정"><br>
+            <input type="submit" id="userInformChange" value="정보 수정"><br>
 
            
                     <a id="userInformClose" style="float: right; margin: 10px;" href="javascript:void(0);">닫기</a>
@@ -590,6 +590,7 @@
     const userEmailLabel = document.querySelector('label[for="email"]');
     const idLabel = document.querySelector('label[for="id"]');
     const email_container = document.getElementById('email-container');
+    const userInformChange = document.getElementById('userInformChange');
 
     let userName = document.getElementById('userName');
     let userEmail = document.getElementById('userEmail');
@@ -782,6 +783,38 @@
         userInformMenu.style.display = 'none';
     })
 
+    userInformChange.addEventListener('click', function(){
+        const passwordSection = document.getElementById('passwordSection');
+        const emailInput = document.getElementById('emailInput');
+        const current_password_change = document.getElementById('current_password_change');
+        const new_password = document.getElementById('new_password');
+        const confirm_new_password = document.getElementById('confirm_new_password');
+        const emailSelect = document.getElementById('email-select');
+        if (passwordSection.style.display === 'block') {
+            // 비밀번호 유효성 검사
+            const newPassword = document.getElementById('new_password').value;
+            const confirmNewPassword = document.getElementById('confirm_new_password').value;
+
+            if (newPassword !== confirmNewPassword) {
+                alert('새 비밀번호가 일치하지 않습니다.');
+                return;
+            }else{
+                alert('비밀번호가 변경되었습니다.');
+                current_password_change.value = '';
+                new_password.value = '';
+                confirmNewPassword.value = '';
+                passwordSection.style.display = 'none';
+            }
+
+        } else {
+            alert('이메일이 변경되었습니다.');
+            emailInput.value = '';
+            emailSelect.selectedIndex = 0;
+            document.getElementById('email-container').style.display = 'none';
+
+        }
+    });
+
     function logout() {
 
         sessionStorage.removeItem('loggedInUser')
@@ -805,6 +838,7 @@
             section.style.display = 'none';
         }
     }
+
 
 
 </script>

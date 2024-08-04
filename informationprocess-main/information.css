@@ -87,8 +87,8 @@ body { /* */
 }
   
   .submenu {
-          display: none;
-          margin-left: 20px;
+          display:block;
+          margin-left: 10px;
           margin-bottom: 20px;
       }
   .submenu a {
