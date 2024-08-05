@@ -124,6 +124,10 @@
             width: 350px;
             text-align: center;
         }
+        .thLastDigit{
+            width: 350px;
+            text-align: center;
+        }
 
         .list li {
             background-color: #f9f9f9;
@@ -202,7 +206,7 @@
             margin-top: 40px;
             z-index: 3;
         }
-        
+
         #userInformMenu input[type="text"],
         #userInformMenu input[type="password"],
         #userInformMenu input[type="tel"] {
@@ -215,7 +219,7 @@
             box-sizing: border-box;
             font-size: 16px;
         }
-        
+
         #userInformMenu input[type="emailInput"] {
             width: 120px;
             padding: 5px;
@@ -224,6 +228,7 @@
             box-sizing: border-box;
             font-size: 16px;
         }
+
         #userInformMenu input[type="submit"] {
             width: 100%;
             padding: 5px;
@@ -236,11 +241,13 @@
             margin-top: 10px;
             margin-right: 10px;
         }
+
         #userInformMenu input[type="submit"]:hover {
             background-color: #ccc;
         }
-        #userInformMenu input[type="emailChange"]{
-            width:60px;
+
+        #userInformMenu input[type="emailChange"] {
+            width: 60px;
             padding: 5px;
             font-size: 16px;
             cursor: pointer;
@@ -253,15 +260,16 @@
             float: right;
 
         }
-        #userInformMenu input[type="emailChange"]:hover{
+
+        #userInformMenu input[type="emailChange"]:hover {
             background-color: #ccc;
         }
 
         .InputButton {
-            
+
             max-width: 100px;
             font-size: 16px;
-            padding : 5px;
+            padding: 5px;
             cursor: pointer;
             border-color: #e9e9e9;
             border-width: 2px;
@@ -269,10 +277,10 @@
             background-color: #f0f0f0;
         }
 
-        .InputButton:hover{
-            background-color: #ccc; 
+        .InputButton:hover {
+            background-color: #ccc;
         }
-        
+
 
         #userMenu {
 
@@ -322,40 +330,46 @@
         .dragging {
             cursor: move;
         }
-        .gender-container{
+
+        .gender-container {
             margin: 10px;
         }
-        #email-container{
-            margin:10px;
+
+        #email-container {
+            margin: 10px;
             display: none;
         }
-        
+
         .password-section {
             display: none;
             margin-top: 20px;
             padding-top: 20px;
             border-top: 1px solid #ccc;
         }
+
         .password-section h2 {
             font-size: 18px;
             margin-bottom: 10px;
             color: #333;
         }
+
         .password-section label {
             margin-bottom: 5px;
         }
+
         h2 {
             text-align: center;
             margin-bottom: 30px;
             color: #333;
         }
+
         .emailSelect {
             width: 120px;
             height: 32px;
             font-size: 15px;
             border: 1;
             outline: none;
-            
+
         }
     </style>
 </head>
@@ -373,8 +387,8 @@
                 <img class="userImage" src="기본프사.png" alt="User Image" width="70" height="70">
                 <div>
                     <h3 id="userName">사용자 이름</h3>
-                        <p id="userEmail">이메일</p>
-                        <input class="InputButton" type="submit" value="사용자 정보" onclick="userInformation()">
+                    <p id="userEmail">이메일</p>
+                    <input class="InputButton" type="submit" value="사용자 정보" onclick="userInformation()">
                 </div>
             </div>
         </div>
@@ -411,30 +425,31 @@
             <div class="gender-container" style="display: flex;">
 
                 <label for="username">이메일</label>
-                
+
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <label for="email">사용자 이메일</label>&nbsp;
                 <input class="emailChange" type="emailChange" value="변경" onclick="emailSelection()">
-              
+
             </div>
             <div id="email-container">
-                
-                <input type="emailInput" id="emailInput" name="changeEmail" value="" ><p style="margin: 5px;">@</p>
-                <select class="emailSelect" id="email-select" name="email-select" onchange="addEmail()">
+
+                <input type="emailInput" id="emailInput" name="changeEmail" value="">
+                <p style="margin: 5px;">@</p>
+                <select class="emailSelect" id="email-select" name="email-select" onchange="">
                     <option>선택</option>
                     <option>naver.com</option>
                     <option>gmail.com</option>
                     <option>daum.net</option>
                     <option>nate.com</option>
                 </select>
-            </p>
+                </p>
             </div>
             <br>
-            
+
             <a class="show-password-section" onclick="togglePasswordSection()">비밀번호 변경</a>
 
             <div class="password-section" id="passwordSection">
-                
+
                 <h2>비밀번호 변경</h2>
                 <label for="current_password_change">현재 비밀번호</label><br>
                 <input type="password" id="current_password_change" name="current_password_change" required>
@@ -446,11 +461,11 @@
                 <label for="confirm_new_password">새 비밀번호 확인</label><br>
                 <input type="password" id="confirm_new_password" name="confirm_new_password" required>
             </div>
-            
+
             <input type="submit" id="userInformChange" value="정보 수정"><br>
 
-           
-                    <a id="userInformClose" style="float: right; margin: 10px;" href="javascript:void(0);">닫기</a>
+
+            <a id="userInformClose" style="float: right; margin: 10px;" href="javascript:void(0);">닫기</a>
 
     </div>
     <br>
@@ -467,71 +482,71 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
+                <tr data-link="2023_1_1.html">
                     <td class="tdtitle"><a href="2023_1_1.html" target="">[2023년 1회] 정보처리기사 실기 기출</a></td>
                     <td class="solv_time"></td>
                     <td class="score"></td>
                 </tr>
-                <tr>
+                <tr data-link="2023_2_1.html">
                     <td class="tdtitle"><a href="2023_2_1.html" target="">[2023년 2회] 정보처리기사 실기 기출</a></td>
                     <td class="solv_time"></td>
                     <td class="score"></td>
                 </tr>
-                <tr>
+                <tr data-link="2023_3_1.html">
                     <td class="tdtitle"><a href="2023_3_1.html" target="">[2023년 3회] 정보처리기사 실기 기출</a></td>
                     <td class="solv_time"></td>
                     <td class="score"></td>
                 </tr>
 
-                <tr>
+                <tr data-link="2022_1_1.html">
                     <td class="tdtitle"><a href="2022_1_1.html" target="">[2022년 1회] 정보처리기사 실기 기출</a></td>
                     <td class="solv_time"></td>
                     <td class="score"></td>
                 </tr>
-                <tr>
+                <tr data-link="2022_2_1.html">
                     <td class="tdtitle"><a href="2022_2_1.html" target="">[2022년 2회] 정보처리기사 실기 기출</a></td>
                     <td class="solv_time"></td>
                     <td class="score"></td>
                 </tr>
-                <tr>
+                <tr data-link="2022_3_1.html">
                     <td class="tdtitle"><a href="2022_3_1.html" target="">[2022년 3회] 정보처리기사 실기 기출</a></td>
                     <td class="solv_time"></td>
                     <td class="score"></td>
                 </tr>
 
-                <tr>
+                <tr data-link="2021_1_1.html">
                     <td class="tdtitle"><a href="2021_1_1.html" target="">[2021년 1회] 정보처리기사 실기 기출</a></td>
                     <td class="solv_time"></td>
                     <td class="score"></td>
                 </tr>
-                <tr>
+                <tr data-link="2021_2_1.html">
                     <td class="tdtitle"><a href="2021_1_1.html" target="">[2021년 2회] 정보처리기사 실기 기출</a></td>
                     <td class="solv_time"></td>
                     <td class="score"></td>
                 </tr>
-                <tr>
+                <tr data-link="2021_3_1.html">
                     <td class="tdtitle"><a href="2021_1_1.html" target="">[2021년 3회] 정보처리기사 실기 기출</a></td>
                     <td class="solv_time"></td>
                     <td class="score"></td>
                 </tr>
 
-                <tr>
+                <tr data-link="2020_1_1.html">
                     <td class="tdtitle"><a href="2020_1_1.html" target="">[2020년 1회] 정보처리기사 실기 기출</a></td>
                     <td class="solv_time"></td>
                     <td class="score"></td>
                 </tr>
 
-                <tr>
+                <tr data-link="2020_2_1.html">
                     <td class="tdtitle"><a href="2020_2_1.html" target="">[2020년 2회] 정보처리기사 실기 기출</a></td>
                     <td class="solv_time"></td>
                     <td class="score"></td>
                 </tr>
-                <tr>
+                <tr data-link="2020_3_1.html">
                     <td class="tdtitle"><a href="2020_3_1.html" target="">[2020년 3회] 정보처리기사 실기 기출</a></td>
                     <td class="solv_time"></td>
                     <td class="score"></td>
                 </tr>
-                <tr>
+                <tr data-link="2020_4_1.html">
                     <td class="tdtitle"><a href="series.html?year=2020" target="">[2020년 4회] 정보처리기사 실기 기출</a></td>
                     <td class="solv_time"></td>
                     <td class="score"></td>
@@ -545,33 +560,44 @@
             <thead>
                 <tr>
                     <th class="tdtitle">강의명</th>
-                    <th class="lastDigit">최근 풀이 회차</th>
+                    <th class="thLastDigit">최근 풀이 회차</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td class="tdtitle"><a
-                            href="subject.html?subject=c&variable=c&year=2023&lastDigit=1&questionNumber=0"
+                    <td class="tdtitle"><a href="subject.html?variable=c&year=2023&lastDigit=1&questionNumber=0"
                             target="">[C언어] 정보처리기사 실기 기출</a></td>
-                    <td class="lastDigit"></td>
+                    <td class="lastDigit" data-subject = "c"></td>
                 </tr>
                 <tr>
-                    <td class="tdtitle"><a
-                            href="subject.html?subject=java&variable=java&year=2023&lastDigit=1&questionNumber=0"
+                    <td class="tdtitle"><a href="subject.html?variable=java&year=2023&lastDigit=1&questionNumber=0"
                             target="">[JAVA] 정보처리기사 실기 기출</a></td>
-                    <td class="lastDigit"></td>
+                    <td class="lastDigit" data-subject = "java"></td>
                 </tr>
                 <tr>
-                    <td class="tdtitle"><a
-                            href="subject.html?subject=java&variable=python&year=2023&lastDigit=1&questionNumber=0"
+                    <td class="tdtitle"><a href="subject.html?variable=python&year=2023&lastDigit=1&questionNumber=0"
                             target="">[PYTHON] 정보처리기사 실기 기출</a></td>
-                    <td class="lastDigit"></td>
+                    <td class="lastDigit" data-subject = "python"></td>
                 </tr>
                 <tr>
-                    <td class="tdtitle"><a
-                            href="subject.html?subject=java&variable=database&year=2023&lastDigit=1&questionNumber=0"
+                    <td class="tdtitle"><a href="subject.html?variable=database&year=2023&lastDigit=1&questionNumber=0"
                             target="">[데이터베이스] 정보처리기사 실기 기출</a></td>
-                    <td class="lastDigit"></td>
+                    <td class="lastDigit" data-subject = "database"></td>
+                </tr>
+                <tr>
+                    <td class="tdtitle"><a href="subject.html?variable=software&year=2023&lastDigit=1&questionNumber=0"
+                            target="">[소프트웨어] 정보처리기사 실기 기출</a></td>
+                    <td class="lastDigit" data-subject = "software"></td>
+                </tr>
+                <tr>
+                    <td class="tdtitle"><a href="subject.html?variable=network&year=2023&lastDigit=1&questionNumber=0"
+                            target="">[네트워크] 정보처리기사 실기 기출</a></td>
+                    <td class="lastDigit" data-subject = "network"></td>
+                </tr>
+                <tr>
+                    <td class="tdtitle"><a href="subject.html?variable=security&year=2023&lastDigit=1&questionNumber=0"
+                            target="">[정보 보안] 정보처리기사 실기 기출</a></td>
+                    <td class="lastDigit" data-subject = "security"></td>
                 </tr>
             </tbody>
         </table>
@@ -657,30 +683,52 @@
     //     localStorage.setItem('users',JSON.stringify(User.items));
     //     console.log(JSON.parse(localStorage.getItem('users')));
     // }
-    window.onload = function changePageToMain() {
-        var loggedInUser = JSON.parse(sessionStorage.getItem('loggedInUser'));
-        console.log("로그인아이디 : " + loggedInUser.id );
-        if (!loggedInUser.id) {
-            location.href = 'project.html';
+    // window.onload = function changePageToMain() {
+    //     var loggedInUser = JSON.parse(sessionStorage.getItem('loggedInUser'));
+    //     console.log("로그인아이디 : " + loggedInUser.id );
 
-        };
+
+    // }
+
+    function redirectToSubject(subject, recentlySolve) {
+        year = recentlySolve.slice(0,4);
+        lastDigit = recentlySolve.slice(4,5);
+        questionNumber = recentlySolve.slice(5,);
+        //console.log('year : '+year+', lastDigit : ',lastDigit+', questionNumber : '+questionNumber);
+        
+        const url = `subject.html?variable=${subject}&year=${year}&lastDigit=${lastDigit}&questionNumber=${questionNumber}`;
+        window.location.href = url;
     }
 
     window.onload = function () {
-
-
         var loggedInUser = JSON.parse(sessionStorage.getItem('loggedInUser'));
-        console.log(loggedInUser.id + loggedInUser.name + loggedInUser.email+', 생년월일 : '+loggedInUser.birthDate);
+        if (loggedInUser && loggedInUser.id) {
+            console.log(loggedInUser.id + loggedInUser.name + loggedInUser.email + ', 생년월일 : ' + loggedInUser.birthDate);
+        } else {
+            // loggedInUser가 없거나 id가 없을 경우 메인 화면으로 리디렉션
+            location.href = 'project.html';
+        }
 
-        // loggedInUser = sessionStorage.getItem('loggedInUser');
-        // console.log(loggedInUser);
-        // var storedLoggedInUser = JSON.parse(sessionStorage.getItem('loggedInUser'));
-        // storedlUsers.forEach(user =>{
-        //     console.log(user.name);
-        //     userName.textContent = user.name;
-        //     userEmail.textContent = loggedInUser.email;
-        // });
-        storedBirthDate =  loggedInUser.birthDate;
+        document.querySelectorAll('.lastDigit').forEach(td => {
+            const subject = td.getAttribute('data-subject');
+            const recentlyKey = subject + '_recently';
+            //td.textContent = loggedInUser[recentlyKey] || '없음';
+            
+            const recentlyValue = loggedInUser[recentlyKey] || '없음';
+
+            // td 요소에 텍스트와 버튼을 동시에 넣기
+            td.innerHTML = `<a class = "recentButton">${recentlyValue}</a> `;
+
+            
+            const recentQButton = td.querySelector('.recentButton');
+            recentQButton.addEventListener('click', function() {
+            redirectToSubject(subject, loggedInUser[recentlyKey]);
+            });
+        })
+
+
+        
+        storedBirthDate = loggedInUser.birthDate;
 
 
         userName.textContent = loggedInUser.name;
@@ -688,8 +736,100 @@
         idLabel.textContent = loggedInUser.id;
         userNameLabel.textContent = loggedInUser.name;
         userEmailLabel.textContent = loggedInUser.email;
-        birthDateLabel.textContent = storedBirthDate.slice(0,4)+'.'+storedBirthDate.slice(4,6)+'.'+storedBirthDate.slice(6,8);
+        birthDateLabel.textContent = storedBirthDate.slice(0, 4) + '.' + storedBirthDate.slice(4, 6) + '.' + storedBirthDate.slice(6, 8);
 
+    }
+
+
+    function toggleList(container, listId) {
+        const list = document.getElementById(listId);
+        list.style.display = list.style.display === 'none' || list.style.display === '' ? 'block' : 'none';
+    };
+
+    function userInformation() {
+        userInformMenu.style.display = userInformMenu.style.display === 'none' || userInformMenu.style.display === '' ? 'block' : 'none';
+    }
+    function emailSelection() {
+        email_container.style.display = email_container.style.display === 'none' || email_container.style.display === '' ? 'flex' : 'none';
+    }
+
+    userInformClose.addEventListener('click', function () {
+        userInformMenu.style.display = 'none';
+    })
+
+    userInformChange.addEventListener('click', function () {
+        const passwordSection = document.getElementById('passwordSection');
+        const emailInput = document.getElementById('emailInput');
+        const current_password_change = document.getElementById('current_password_change');
+        const new_password = document.getElementById('new_password');
+        const confirm_new_password = document.getElementById('confirm_new_password');
+        const emailSelect = document.getElementById('email-select');
+        if (passwordSection.style.display === 'block') {
+            if (current_password_change.value === '' && new_password.value === '' && confirmNewPassword.value === '') {
+
+                alert('이메일이 변경되었습니다.');
+                userEmailLabel.textContent = emailInput.value;
+                emailInput.value = '';
+                emailSelect.selectedIndex = 0;
+                document.getElementById('email-container').style.display = 'none';
+                passwordSection.style.display = 'none';
+            } else {
+
+                // 비밀번호 유효성 검사
+                const newPassword = document.getElementById('new_password').value;
+                const confirmNewPassword = document.getElementById('confirm_new_password').value;
+
+                if (newPassword !== confirmNewPassword) {
+                    alert('새 비밀번호가 일치하지 않습니다.');
+                    return;
+                } else {
+                    alert('비밀번호가 변경되었습니다.');
+                    current_password_change.value = '';
+                    new_password.value = '';
+                    confirmNewPassword.value = '';
+                    passwordSection.style.display = 'none';
+                }
+            }
+
+        } else {
+            alert('이메일이 변경되었습니다.');
+            userEmailLabel.textContent = emailInput.value;
+            emailInput.value = '';
+            emailSelect.selectedIndex = 0;
+            document.getElementById('email-container').style.display = 'none';
+
+        }
+    });
+
+    function logout() {
+
+        sessionStorage.removeItem('loggedInUser')
+        window.location.href = "project.html";
+
+    }
+
+    userButton.addEventListener('click', function () {
+        if (userInformMenu.style.display === 'block') {
+            userInformMenu.style.display = 'none';
+        } else {
+            userMenu.style.display = userMenu.style.display === 'block' ? 'none' : 'block';
+        }
+
+    });
+    function togglePasswordSection() {
+        var section = document.getElementById('passwordSection');
+        if (section.style.display === 'none' || section.style.display === '') {
+            section.style.display = 'block';
+        } else {
+            section.style.display = 'none';
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+
+
+
+        // 저장된 세션 데이터를 가져옵니다
         const allSessionData = {
             'sessionData': JSON.parse(sessionStorage.getItem('sessionData')),
             'sessionData2': JSON.parse(sessionStorage.getItem('sessionData2')),
@@ -764,80 +904,7 @@
                 }
             }
         });
-    }
-
-
-    function toggleList(container, listId) {
-        const list = document.getElementById(listId);
-        list.style.display = list.style.display === 'none' || list.style.display === '' ? 'block' : 'none';
-    };
-
-    function userInformation() {
-        userInformMenu.style.display = userInformMenu.style.display === 'none' || userInformMenu.style.display === '' ? 'block' : 'none';
-    }
-    function emailSelection(){
-        email_container.style.display = email_container.style.display === 'none' || email_container.style.display === '' ? 'flex' : 'none';
-    }
-
-    userInformClose.addEventListener('click', function () {
-        userInformMenu.style.display = 'none';
-    })
-
-    userInformChange.addEventListener('click', function(){
-        const passwordSection = document.getElementById('passwordSection');
-        const emailInput = document.getElementById('emailInput');
-        const current_password_change = document.getElementById('current_password_change');
-        const new_password = document.getElementById('new_password');
-        const confirm_new_password = document.getElementById('confirm_new_password');
-        const emailSelect = document.getElementById('email-select');
-        if (passwordSection.style.display === 'block') {
-            // 비밀번호 유효성 검사
-            const newPassword = document.getElementById('new_password').value;
-            const confirmNewPassword = document.getElementById('confirm_new_password').value;
-
-            if (newPassword !== confirmNewPassword) {
-                alert('새 비밀번호가 일치하지 않습니다.');
-                return;
-            }else{
-                alert('비밀번호가 변경되었습니다.');
-                current_password_change.value = '';
-                new_password.value = '';
-                confirmNewPassword.value = '';
-                passwordSection.style.display = 'none';
-            }
-
-        } else {
-            alert('이메일이 변경되었습니다.');
-            emailInput.value = '';
-            emailSelect.selectedIndex = 0;
-            document.getElementById('email-container').style.display = 'none';
-
-        }
     });
-
-    function logout() {
-
-        sessionStorage.removeItem('loggedInUser')
-        window.location.href = "project.html";
-
-    }
-
-    userButton.addEventListener('click', function () {
-        if (userInformMenu.style.display === 'block') {
-            userInformMenu.style.display = 'none';
-        } else {
-            userMenu.style.display = userMenu.style.display === 'block'? 'none' : 'block';
-        }
-
-    });
-    function togglePasswordSection() {
-        var section = document.getElementById('passwordSection');
-        if (section.style.display === 'none' || section.style.display === '') {
-            section.style.display = 'block';
-        } else {
-            section.style.display = 'none';
-        }
-    }
 
 
 

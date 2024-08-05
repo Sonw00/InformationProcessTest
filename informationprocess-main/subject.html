@@ -17,16 +17,23 @@
         <div class="mainmenu" id="">
             <a href='javascript:void(0);' onclick="" class="mainmenu" id="main_menu">과목별 기출문제</a>
         </div>
-        
-      <div class="submenu">
-        <a href='javascript:void(0);' onclick="loadSubjectQuestionSet('c','20231','0')" class="mainmenu" id="c_menu">[C언어] 기출문제</a>
-        <a href='javascript:void(0);' onclick="loadSubjectQuestionSet('java','20231','0')" class="mainmenu" id="java_menu">[JAVA] 기출문제</a>
-        <a href='javascript:void(0);' onclick="loadSubjectQuestionSet('python','20231','0')" class="mainmenu" id="python_menu">[PYTHON] 기출문제</a>
-        <a href='javascript:void(0);' onclick="loadSubjectQuestionSet('database','20231','0')" class="mainmenu" id="database_menu">[DATABASE] 기출문제</a>
-        <a href='javascript:void(0);' onclick="loadSubjectQuestionSet('software','20231','0')" class="mainmenu" id="software_menu">[소프트웨어 설계] 기출문제</a>
-        <a href='javascript:void(0);' onclick="loadSubjectQuestionSet('network','20231','0')" class="mainmenu" id="network_menu">[네트워크] 기출문제</a>
-        <a href='javascript:void(0);' onclick="loadSubjectQuestionSet('security','20231','0')" class="mainmenu" id="network_menu">[정보 보안] 기출문제</a>
-    </div>
+
+        <div class="submenu">
+            <a href='javascript:void(0);' onclick="loadSubjectQuestionSet('c','20231','0')" class="mainmenu"
+                id="c_menu">[C언어] 기출문제</a>
+            <a href='javascript:void(0);' onclick="loadSubjectQuestionSet('java','20231','0')" class="mainmenu"
+                id="java_menu">[JAVA] 기출문제</a>
+            <a href='javascript:void(0);' onclick="loadSubjectQuestionSet('python','20231','0')" class="mainmenu"
+                id="python_menu">[PYTHON] 기출문제</a>
+            <a href='javascript:void(0);' onclick="loadSubjectQuestionSet('database','20231','0')" class="mainmenu"
+                id="database_menu">[DATABASE] 기출문제</a>
+            <a href='javascript:void(0);' onclick="loadSubjectQuestionSet('software','20231','0')" class="mainmenu"
+                id="software_menu">[소프트웨어 설계] 기출문제</a>
+            <a href='javascript:void(0);' onclick="loadSubjectQuestionSet('network','20231','0')" class="mainmenu"
+                id="network_menu">[네트워크] 기출문제</a>
+            <a href='javascript:void(0);' onclick="loadSubjectQuestionSet('security','20231','0')" class="mainmenu"
+                id="network_menu">[정보 보안] 기출문제</a>
+        </div>
         <p><br></p>
         <p><br></p>
 
@@ -134,22 +141,26 @@
             let currentSubject = '0';
             const header = document.querySelector("h1");
             const pages = document.querySelectorAll('.page');
-            
+
+            var storedUsers;
+
+            var loggedInUser;
+
             let n;
 
 
             document.getElementById('nextPage').addEventListener('click', () => {
-                
-                loadSubjectQuestionSet(currentSubject,currentPage, nextQuestionNumber);
+
+                loadSubjectQuestionSet(currentSubject, currentPage, nextQuestionNumber);
                 window.scrollTo(0, 0); // 페이지 전환 시 맨 위로 스크롤
 
 
             });
             document.getElementById('prevPage').addEventListener('click', () => {
-                console.log('버튼 작동여부'+firstQuestionNumber);
+                console.log('버튼 작동여부' + firstQuestionNumber);
                 const prevPageInfo = searchPrevPageNum(firstQuestionNumber);
-                console.log('searchPrevPageNum 리턴값 : '+prevPageInfo.keyprevPage +'+'+prevPageInfo.keyPrevNum);
-                if(prevPageInfo){
+                console.log('searchPrevPageNum 리턴값 : ' + prevPageInfo.keyprevPage + '+' + prevPageInfo.keyPrevNum);
+                if (prevPageInfo) {
                     prevPage = prevPageInfo.keyprevPage;
                     const prevQuestionNum = prevPageInfo.keyPrevNum;
                     loadSubjectQuestionSet(currentSubject, prevPage, prevQuestionNum);
@@ -162,57 +173,56 @@
                 // }else{
                 //     loadSubjectQuestionSet(currentSubject,currentPage,nextQuestionNumber);
                 // }
-                
+
                 //     window.scrollTo(0, 0); // 페이지 전환 시 맨 위로 스크롤
 
-                
+
             });
-            function searchPrevPageNum(firstNum){
+            function searchPrevPageNum(firstNum) {
                 let searchingPrevQuestionNum = parseInt(firstNum) - 1; //검색 시작할 문제 번호
                 let searchingCurrentPage = currentPage;             // 현재페이지 지역변수저장
-                console.log('검색 시작할 문제번호'+searchingPrevQuestionNum);  
-                let n=0;        // 찾아낸 문제 수
+                console.log('검색 시작할 문제번호' + searchingPrevQuestionNum);
+                let n = 0;        // 찾아낸 문제 수
                 prevPage = returnPrevPage(searchingCurrentPage);    // 이전 페이지 저장
-                let questions =Questions[searchingCurrentPage];     // 문제 데이터 뭉텅이
-                while(n<=4){        // 문제 4개 찾을 때까지
-                    if(searchingPrevQuestionNum<0){         //문제번호가 0 이하일 때
+                let questions = Questions[searchingCurrentPage];     // 문제 데이터 뭉텅이
+                while (n <= 4) {        // 문제 4개 찾을 때까지
+                    if (searchingPrevQuestionNum < 0) {         //문제번호가 0 이하일 때
 
-                        if(Questions.hasOwnProperty(prevPage)){ // 이전회차 문제 존재 검사
+                        if (Questions.hasOwnProperty(prevPage)) { // 이전회차 문제 존재 검사
                             questions = Questions[prevPage];
-                            console.log('이동할 이전페이지:'+prevPage+questions.name);
-                            searchingPrevQuestionNum = questions.length-1;
-                            console.log('questions has own property'+questions.hasOwnProperty(name));
-                            if(questions.hasOwnProperty(name)&&questions[searchingPrevQuestionNum].type === currentSubject){
+                            console.log('이동할 이전페이지:' + prevPage + questions.name);
+                            searchingPrevQuestionNum = questions.length - 1;
+                            console.log('questions has own property' + questions.hasOwnProperty(name));
+                            if (questions.hasOwnProperty(name) && questions[searchingPrevQuestionNum].type === currentSubject) {
                                 n++;
-                            }else {break;}
-                        }else {break;}
+                            } else { break; }
+                        } else { break; }
                     } else {
-                        if(questions[searchingPrevQuestionNum].type === currentSubject){
-                            console.log('확인 : '+questions[searchingPrevQuestionNum].name);
-                                n++;
-                            }
+                        if (questions[searchingPrevQuestionNum].type === currentSubject) {
+                            console.log('확인 : ' + questions[searchingPrevQuestionNum].name);
+                            n++;
+                        }
                     };
-                    
-                    
-                    searchingPrevQuestionNum-=1;
+
+
+                    searchingPrevQuestionNum -= 1;
                     console.log('')
                 }
-                console.log('prevPage : '+prevPage+', searchingPrevQuestionNum : '+searchingPrevQuestionNum);
+                console.log('prevPage : ' + prevPage + ', searchingPrevQuestionNum : ' + searchingPrevQuestionNum);
                 return {
-                keyprevPage: prevPage,
-                keyPrevNum: searchingPrevQuestionNum + 1
-            };
+                    keyprevPage: prevPage,
+                    keyPrevNum: searchingPrevQuestionNum + 1
+                };
             }
 
             function loadSubjectQuestionSet(type, page, i) {
-                console.log('loadSubjectQuestionSet 함수 실행/ 과목:'+type+', 회차 : '+page+', 시작문제번호 : '+i);
+                //console.log('loadSubjectQuestionSet 함수 실행/ 과목:' + type + ', 회차 : ' + page + ', 시작문제번호 : ' + i);
                 firstQuestionNumber = i;
                 currentPage = page;
                 currentSubject = type;
                 let year = page.slice(0, 4);
                 let lastDigit = page.slice(4);
                 const questions = Questions[page];
-                console.log(questions);
                 if (!type) header.textContent = '정보처리기사 기출문제';
                 else header.textContent = `[${type.toUpperCase()}] 정보처리기사 기출문제`;
 
@@ -223,19 +233,19 @@
                     // document.getElementById(`code${j}`).innerHTML = '';
                     // document.querySelector(`#question${j} pre`).style.display = 'none';
                     // document.getElementById(`divBox${j}`).innerHTML = '';
-                    
+
                     const correctAnswerElement = document.getElementById('correctAnswer' + j);
                     const answerResultElement = document.getElementById('answerResult' + j);
-                    const answerTextarea = document.getElementById('answer'+j)
+                    const answerTextarea = document.getElementById('answer' + j)
                     correctAnswerElement.textContent = '';
                     answerTextarea.value = '';
                     answerResultElement.style.display = 'none';
                 }
-                console.log('n:'+n)
+                console.log('n:' + n)
                 while (i < questions.length && n < 4) {
                     console.log(questions[i].type);
                     if (questions[i].type === type) {
-                        if(questions[i].hasOwnProperty)console.log('hasOwnProperty : '+ questions[i].name);
+                        if (questions[i].hasOwnProperty) console.log('hasOwnProperty : ' + questions[i].name);
                         console.log("Question " + (n + 1) + " Answer:", questions[i].answer);
 
                         document.getElementById(`questionName${n + 1}`).innerHTML = '[' + year + '년 ' + lastDigit + '회] ' + questions[i].name || '';
@@ -246,15 +256,42 @@
 
                         let index = n + 1;
                         let question = questions[i];
+                        let currentI = i;
                         document.getElementById(`checkAnswer${index}`).addEventListener('click', function () {
-                            if(question.hasOwnProperty('answer_and')){
-                                checkAnswer_and(index,question.answer_and)
-                            } else if(question.hasOwnProperty('answer_exact')){
-                                checkAnswer_exact(index,question.answer_exact)
+                            //문제확인 알고리즘
+                            if (question.hasOwnProperty('answer_and')) {
+                                checkAnswer_and(index, question.answer_and)
+                            } else if (question.hasOwnProperty('answer_exact')) {
+                                checkAnswer_exact(index, question.answer_exact)
                             }
                             else {
-                            checkAnswer(index, question.answer);
+                                checkAnswer(index, question.answer);
                             }
+                            //마지막 풀이문제 저장
+                            console.log(loggedInUser);
+                            if (loggedInUser) {
+
+                                
+                                console.log(JSON.parse(localStorage.getItem('users')));
+                                storedUsers.forEach(user => {
+
+                                    if (user.id === loggedInUser.id) {
+                                        let recently_q = currentSubject + '_recently';
+                                        console.log("현재 회차 : "+currentPage+", 마지막풀이 문제 번호 : "+currentI);
+                                        user[recently_q] = currentPage + currentI;
+                                    }
+                                });
+
+                                // 수정된 'users' 데이터를 다시 로컬스토리지에 저장
+                                localStorage.setItem('users', JSON.stringify(storedUsers));
+
+                                // 디버그를 위해 콘솔에 저장된 'users' 데이터 출력
+                                console.log(JSON.parse(localStorage.getItem('users')));
+
+
+
+                            }
+
                         });
                         document.getElementById(`eraseAnswer${index}`).addEventListener('click', function () {
                             eraseAnswer(index);
@@ -266,7 +303,7 @@
                     nextQuestionNumber = i;
                     //console.log('hasOwnProperty : '+ questions.hasOwnProperty(name));
                     if (n >= 4 || questions.hasOwnProperty('name')) {
-                        console.log('문제출력 종료 전 다음 페이지 시작번호 출력'+nextQuestionNumber);
+                        console.log('문제출력 종료 전 다음 페이지 시작번호 출력' + nextQuestionNumber);
                         break;
                     }
                 }
@@ -282,16 +319,16 @@
                     }
                 }
 
-                if (n < 4 && i >= questions.length ) {
+                if (n < 4 && i >= questions.length) {
                     nextPage = returnNextPage(currentPage);
-                    console.log('현재 페이지 : '+ currentPage+'다음페이지 : '+nextPage)
+                    console.log('현재 페이지 : ' + currentPage + '다음페이지 : ' + nextPage)
                     if (Questions.hasOwnProperty(nextPage)) {
-                        console.log('다음페이지가 존재하는지 : ' +Questions.hasOwnProperty(nextPage)+ ', 다음문제번호 : '+nextQuestionNumber);
+                        console.log('다음페이지가 존재하는지 : ' + Questions.hasOwnProperty(nextPage) + ', 다음문제번호 : ' + nextQuestionNumber);
                         loadSubjectQuestionSet(type, nextPage, '0');
-                    } else {console.log("다음 회차가 존재하지 않습니다");};
+                    } else { console.log("다음 회차가 존재하지 않습니다"); };
                 }
-                
-                n=0;
+
+                n = 0;
             }
 
 
@@ -309,10 +346,10 @@
                 if (Array.isArray(correctAnswer)) {
                     isCorrect = correctAnswer.some(answer =>
                         userAnswer.includes(answer.toLowerCase().trim())
-                        
+
                     );
                     correctAnswer = correctAnswer.map(answer => answer.replace(/\n/g, '<br>'));
-    
+
                 } else {
                     isCorrect = userAnswer === correctAnswer.toLowerCase().trim();
                     correctAnswer = correctAnswer.replace(/\n/g, '<br>');
@@ -326,12 +363,13 @@
                 } else {
                     correctAnswerElement.innerHTML = `오답입니다. 정답은:<br> ${Array.isArray(correctAnswer) ? correctAnswer.join(' 또는 ') : correctAnswer}`;
                 }
+
                 answerResultElement.style.display = 'block';
 
 
             }
             function checkAnswer_and(questionNumber, correctAnswer) {
-                
+
                 console.log('checkAnswer_and 실행');
                 const userAnswer = document.getElementById('answer' + questionNumber).value.trim().toLowerCase();
                 const correctAnswerElement = document.getElementById('correctAnswer' + questionNumber);
@@ -366,7 +404,7 @@
             }
 
             function checkAnswer_exact(questionNumber, correctAnswer) {
-                console.log('checkAnswer_exact 실행 correctAnswer : '+ correctAnswer);
+                console.log('checkAnswer_exact 실행 correctAnswer : ' + correctAnswer);
                 const userAnswer = document.getElementById('answer' + questionNumber).value.trim();
                 const correctAnswerElement = document.getElementById('correctAnswer' + questionNumber);
                 const answerResultElement = document.getElementById('answerResult' + questionNumber);
@@ -412,6 +450,7 @@
                 return false;
             }
             function getQueryVariables(variable, year, lastDigit, questionNumber) {
+                console.log('getQueryVariables실행')
                 // 쿼리 문자열에서 '?'를 제거합니다.
                 var query = window.location.search.substring(1);
                 // '&'로 구분하여 각 쌍을 배열로 만듭니다.
@@ -447,7 +486,10 @@
                 return result;
             }
             document.addEventListener('DOMContentLoaded', function () {
-                
+
+                storedUsers = JSON.parse(localStorage.getItem('users'));
+                loggedInUser = JSON.parse(sessionStorage.getItem('loggedInUser'));
+
                 totalTime = sessionStorage.getItem("totalTime");
                 totalTime = totalTime ? parseInt(totalTime, 10) : 0;
 
@@ -461,14 +503,14 @@
                     console.log(queryResult.year); // "2023"
                     console.log(queryResult.lastDigit); // "1"
                     console.log(queryResult.questionNumber); // "5"
-                    
-                    n=0;
+
+                    n = 0;
                     loadSubjectQuestionSet(queryResult.variable, queryResult.year + queryResult.lastDigit, queryResult.questionNumber);
-                } else if(subject){
-                    n=0;
+                } else if (subject) {
+                    n = 0;
                     loadSubjectQuestionSet(subject, '20231', '0');
-                }else{
-                    
+                } else {
+
                     console.log("No query parameters found");
                 }
                 // 타이머 설정
@@ -502,47 +544,50 @@
                     });
                 });
 
-                
-                
 
-            });
 
-            function returnPrevPage(currentPage){
-                
+            }
+
+
+
+            );
+
+            function returnPrevPage(currentPage) {
+
                 let prevPage;
-                if(currentPage === '20241'){
-                        prevPage = '20233'
-                    } else if(currentPage === '20231'){
-                        prevPage = '20223'
-                    } else if(currentPage === '20221'){
-                        prevPage = '20213'
-                    } else if(currentPage === '20211'){
-                        prevPage = '20204'
-                    } else if(currentPage === '20201'){
-                        prevPage = '20242'
-                    }else {
-                        prevPage = (parseInt(currentPage) - 1).toString();
-                    }
-                    return prevPage;
+                if (currentPage === '20241') {
+                    prevPage = '20233'
+                } else if (currentPage === '20231') {
+                    prevPage = '20223'
+                } else if (currentPage === '20221') {
+                    prevPage = '20213'
+                } else if (currentPage === '20211') {
+                    prevPage = '20204'
+                } else if (currentPage === '20201') {
+                    prevPage = '20242'
+                } else {
+                    prevPage = (parseInt(currentPage) - 1).toString();
+                }
+                return prevPage;
             };
-            function returnNextPage(currentPage){
+            function returnNextPage(currentPage) {
                 let nextPage;
-                if(currentPage === '20204'){
-                        nextPage = '20211'
-                    } else if(currentPage === '20213'){
-                        nextPage = '20221'
-                    } else if(currentPage === '20223'){
-                        nextPage = '20231'
-                    } else if(currentPage === '20233'){
-                        nextPage = '20241'
-                    } else if(currentPage === '20242'){
-                        nextPage = '20201'
-                    }
-                    else {
-                        nextPage = (parseInt(currentPage) +1).toString();
-                    }
-                    console.log("return nextPage : "+nextPage);
-                    return nextPage;
+                if (currentPage === '20204') {
+                    nextPage = '20211'
+                } else if (currentPage === '20213') {
+                    nextPage = '20221'
+                } else if (currentPage === '20223') {
+                    nextPage = '20231'
+                } else if (currentPage === '20233') {
+                    nextPage = '20241'
+                } else if (currentPage === '20242') {
+                    nextPage = '20201'
+                }
+                else {
+                    nextPage = (parseInt(currentPage) + 1).toString();
+                }
+                console.log("return nextPage : " + nextPage);
+                return nextPage;
             };
 
             function updateTimer() {

@@ -370,7 +370,7 @@ a:hover {
                 </tr>
                 <tr>
                     <td><input type="email" class="email" id="joinEmail"> @
-                        <select class="emailSelect" id="email-select" name="email-select" onchange="addEmail()">
+                        <select class="emailSelect" id="email-select" name="email-select" onchange="">
                             <option>선택</option>
                             <option>naver.com</option>
                             <option>gmail.com</option>
@@ -463,7 +463,16 @@ a:hover {
                     <td class="tdtitle"><a href="subject.html?subject=python" target="">[PYTHON] 정보처리기사 실기 기출</a></td>
                 </tr>
                 <tr>
-                    <td class="tdtitle"><a href="subject.html?subject=db" target="">[데이터베이스] 정보처리기사 실기 기출</a></td>
+                    <td class="tdtitle"><a href="subject.html?subject=database" target="">[데이터베이스] 정보처리기사 실기 기출</a></td>
+                </tr>
+                <tr>
+                    <td class="tdtitle"><a href="subject.html?subject=software" target="">[소프트웨어] 정보처리기사 실기 기출</a></td>
+                </tr>
+                <tr>
+                    <td class="tdtitle"><a href="subject.html?subject=network" target="">[네트워크] 정보처리기사 실기 기출</a></td>
+                </tr>
+                <tr>
+                    <td class="tdtitle"><a href="subject.html?subject=security" target="">[정보 보안] 정보처리기사 실기 기출</a></td>
                 </tr>
             </tbody>
         </table>
@@ -491,14 +500,12 @@ a:hover {
         console.log(JSON.parse(localStorage.getItem('users')));
     }
 
-//     window.onload = function() {
-//     if(i==0){
-
-//         localStorage.setItem('users',JSON.stringify(User.items));
-//         console.log(JSON.parse(localStorage.getItem('users')));
-//         i=1;
-// }
-//     }
+    window.onload = function() {
+        var loggedInUser = JSON.parse(sessionStorage.getItem('loggedInUser'));
+        if (loggedInUser && loggedInUser.id) {
+            location.href = 'project.html';
+        }
+    }
 
 document.getElementById('joinBirthDate').addEventListener('input', function(e) {
   let joinBirthDate = new Date(this.value);
@@ -571,7 +578,14 @@ document.getElementById('joinBirthDate').addEventListener('input', function(e) {
                 pwd: joinPwd,
                 name: joinName,
                 birthDate: joinBirthDateText,
-                email: joinEmail
+                email: joinEmail,
+                c_recently:"",
+                java_recently:"",
+                python_recently:"",
+                database_recently:"",
+                software_recently:"",
+                network_recently:"",
+                security_recently:""
             });
 
             localStorage.setItem('users',JSON.stringify(User.items));

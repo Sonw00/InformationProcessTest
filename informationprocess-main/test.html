@@ -3,235 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>정보처리기사 기출문제</title>
-    <link rel='stylesheet' href="information.css">
+    <title>과목별 기출 문제 풀이</title>
+    <style>
+        .container { margin: 20px; }
+        .ptag { font-size: 18px; font-weight: bold; }
+        .list { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .list th, .list td { border: 1px solid #ddd; padding: 8px; }
+        .list th { background-color: #f2f2f2; text-align: center; }
+        .list td { text-align: center; }
+        .btn { padding: 5px 10px; font-size: 14px; }
+        .hover-highlight:hover { text-decoration: underline; color: blue; }
+        .recentButton { margin-left: 10px; }
+    </style>
 </head>
 <body>
-    <button id="menuOpen">메뉴</button>
-    <div id="menu">
-        <div class="mainmenu">
-            <a href='javascript:void(0);' onclick="loadSubjectQuestionSet('c','20231','0')" class="mainmenu" id="c_menu">[C언어] 기출문제</a>
-        </div>
-        <div class="mainmenu">
-            <a href='javascript:void(0);' onclick="loadSubjectQuestionSet('java','20231','0')" class="mainmenu" id="java_menu">[JAVA] 기출문제</a>
-        </div>
-        <div class="mainmenu">
-            <a href='javascript:void(0);' onclick="loadSubjectQuestionSet('python','20231','0')" class="mainmenu" id="python_menu">[PYTHON] 기출문제</a>
-        </div>
-        <div class="mainmenu">
-            <a href='javascript:void(0);' onclick="loadSubjectQuestionSet('db','20231','0')" class="mainmenu" id="database_menu">[데이터베이스] 기출문제</a>
-        </div>
+    <div class="container" onclick="toggleList(this, 'list2')">
+        <p class="ptag">정보처리기사 과목별 기출 문제 풀이</p>
     </div>
+    <table id="list2" class="list">
+        <thead>
+            <tr>
+                <th class="tdtitle">강의명</th>
+                <th class="thLastDigit">최근 풀이 회차</th>
+                <th class="thAction">이동</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="tdtitle"><a href="subject.html?variable=c&year=2023&lastDigit=1&questionNumber=0">[C언어] 정보처리기사 실기 기출</a></td>
+                <td class="lastDigit" data-subject="c"></td>
+                <td><button class="btn" onclick="redirectToSubject('c')">이동</button></td>
+            </tr>
+            <tr>
+                <td class="tdtitle"><a href="subject.html?variable=java&year=2023&lastDigit=1&questionNumber=0">[JAVA] 정보처리기사 실기 기출</a></td>
+                <td class="lastDigit" data-subject="java"></td>
+                <td><button class="btn" onclick="redirectToSubject('java')">이동</button></td>
+            </tr>
+            <tr>
+                <td class="tdtitle"><a href="subject.html?variable=python&year=2023&lastDigit=1&questionNumber=0">[PYTHON] 정보처리기사 실기 기출</a></td>
+                <td class="lastDigit" data-subject="python"></td>
+                <td><button class="btn" onclick="redirectToSubject('python')">이동</button></td>
+            </tr>
+            <tr>
+                <td class="tdtitle"><a href="subject.html?variable=database&year=2023&lastDigit=1&questionNumber=0">[데이터베이스] 정보처리기사 실기 기출</a></td>
+                <td class="lastDigit" data-subject="database"></td>
+                <td><button class="btn" onclick="redirectToSubject('database')">이동</button></td>
+            </tr>
+            <tr>
+                <td class="tdtitle"><a href="subject.html?variable=software&year=2023&lastDigit=1&questionNumber=0">[소프트웨어] 정보처리기사 실기 기출</a></td>
+                <td class="lastDigit" data-subject="software"></td>
+                <td><button class="btn" onclick="redirectToSubject('software')">이동</button></td>
+            </tr>
+            <tr>
+                <td class="tdtitle"><a href="subject.html?variable=network&year=2023&lastDigit=1&questionNumber=0">[네트워크] 정보처리기사 실기 기출</a></td>
+                <td class="lastDigit" data-subject="network"></td>
+                <td><button class="btn" onclick="redirectToSubject('network')">이동</button></td>
+            </tr>
+            <tr>
+                <td class="tdtitle"><a href="subject.html?variable=security&year=2023&lastDigit=1&questionNumber=0">[정보 보안] 정보처리기사 실기 기출</a></td>
+                <td class="lastDigit" data-subject="security"></td>
+                <td><button class="btn" onclick="redirectToSubject('security')">이동</button></td>
+            </tr>
+        </tbody>
+    </table>
 
-    <div id="main-content">
-        <h1>정보처리기사 기출문제</h1>
-        <button class="mainButton" onclick="changePageToMain()">메인 메뉴로 돌아가기</button>
-        <div id="timer2">제한시간: 02:30:00</div>
-        <div id="timer">00:00:00</div>
-        <div id="page1" class="page active">
-            <div id="question1"></div>
-            <div id="question2"></div>
-            <div id="question3"></div>
-            <div id="question4"></div>
-            <button id="prevPage">이전</button>
-            <button id="nextPage">다음</button>
-        </div>
-    </div>
-
-    <script src="information.js"></script>
-    <script src="question.js"></script>
     <script>
-    let firstQuestionNumber = '0';
-    let nextQuestionNumber = '0';
-    let currentPage = '20231';
-    let prevPage = '20223';
-    let nextPage = '20232';
-    let currentSubject = '0';
-    let totalTime = 0;
-    let count = 0;
-
-
-    function loadSubjectQuestionSet(type, page, i) {
-        firstQuestionNumber = parseInt(i);
-        currentPage = page;
-        currentSubject = type;
-        let year = page.slice(0, 4);
-        let lastDigit = page.slice(4);
-        const questions = Questions[page];
-
-        document.querySelector("h1").textContent = `[${type.toUpperCase()}] 정보처리기사 기출문제`;
-
-        let n = 0;
-        for (let j = 1; j <= 4; j++) {
-            let questionIndex = firstQuestionNumber + j - 1;
-            if (questionIndex < questions.length && questions[questionIndex].type === type) {
-                loadQuestion(j, questions[questionIndex], year, lastDigit);
-                n++;
-            } else {
-                clearQuestion(j);
-            }
+        function toggleList(container, listId) {
+            var list = document.getElementById(listId);
+            list.style.display = (list.style.display === 'none') ? 'table' : 'none';
         }
 
-        nextQuestionNumber = firstQuestionNumber + n;
-        if (nextQuestionNumber >= questions.length) {
-            nextPage = returnNextPage(currentPage);
-            if (Questions.hasOwnProperty(nextPage)) {
-                nextQuestionNumber = 0;
-            } else {
-                console.log("다음 회차가 존재하지 않습니다");
-            }
-        }
-
-        const prevPageInfo = searchPrevPageNum(firstQuestionNumber);
-        if (prevPageInfo) {
-            prevPage = prevPageInfo.prevPage;
-        } else {
-            console.log("이전 페이지가 없습니다");
-        }
-    }
-
-    function loadQuestion(index, question, year, lastDigit) {
-        const questionElement = document.getElementById(`question${index}`);
-        questionElement.innerHTML = `
-            <p>[${year}년 ${lastDigit}회] ${question.name}</p>
-            <table>${question.table || ''}</table>
-            <pre><code>${question.code || ''}</code></pre>
-            <div>${question.div || ''}</div>
-            <textarea id="answer${index}" rows="3" cols="50"></textarea>
-            <button onclick="checkAnswer(${index}, '${question.answer}')">정답 확인</button>
-            <button onclick="eraseAnswer(${index})">정답 지우기</button>
-            <div id="answerResult${index}"></div>
-        `;
-    }
-
-    function clearQuestion(index) {
-        document.getElementById(`question${index}`).innerHTML = '';
-    }
-
-    function checkAnswer(questionNumber, correctAnswer) {
-        const userAnswer = document.getElementById(`answer${questionNumber}`).value.trim().toLowerCase();
-        const resultElement = document.getElementById(`answerResult${questionNumber}`);
-
-        if (Array.isArray(correctAnswer)) {
-            correctAnswer = correctAnswer.map(answer => answer.toLowerCase().trim());
-        } else {
-            correctAnswer = [correctAnswer.toLowerCase().trim()];
-        }
-
-        if (correctAnswer.includes(userAnswer)) {
-            resultElement.innerHTML = '정답입니다!';
-            count++;
-        } else {
-            resultElement.innerHTML = `오답입니다. 정답은: ${correctAnswer.join(' 또는 ')}`;
-        }
-    }
-
-    function eraseAnswer(questionNumber) {
-        document.getElementById(`answer${questionNumber}`).value = '';
-        document.getElementById(`answerResult${questionNumber}`).innerHTML = '';
-    }
-
-    function searchPrevPageNum(firstQuestionNumber) {
-        let searchingPrevQuestionNum = parseInt(firstQuestionNumber) - 1;
-        let n = 0;
-        let prevPage = returnPrevPage(currentPage);
-        const questions = Questions[currentPage];
-        let prevPageQuestions = Questions[prevPage];
-
-        while (n < 4) {
-            if (searchingPrevQuestionNum < 0) {
-                searchingPrevQuestionNum = 19;
-                prevPage = returnPrevPage(prevPage);
-                if (!Questions[prevPage]) {
-                    console.log("이전 페이지가 없습니다.");
-                    return null;
-                }
-                prevPageQuestions = Questions[prevPage];
-            }
+        window.onload = function() {
             
-            if ((searchingPrevQuestionNum < questions.length && questions[searchingPrevQuestionNum].type === currentSubject) ||
-                (prevPageQuestions && prevPageQuestions[searchingPrevQuestionNum].type === currentSubject)) {
-                n++;
-            }
-            searchingPrevQuestionNum--;
-        }
-        
-        return {
-            prevPage: prevPage,
-            searchingPrevQuestionNum: searchingPrevQuestionNum + 1
+
+            document.querySelectorAll('.lastDigit').forEach(td => {
+                const subject = td.getAttribute('data-subject');
+                const recentlyKey = subject + '_recently';
+                let text = loggedInUser[recentlyKey] || '없음';
+                const recentQText = document.createElement('a');
+                a.textContent = text;
+                const recentQButton = document.createElement('button');
+                recentQButton.className = 'recentButton';
+                recentQButton.textContent = '이동';
+                recentQButton.addEventListener('click', function() {
+                    redirectToSubject(subject, loggedInUser[recentlyKey]);
+                });
+                td.appendChild(recentQText);
+                td.appendChild(recentQButton);
+            });
         };
-    }
 
-    function returnPrevPage(currentPage) {
-        // 이전 페이지 반환 로직 구현
-        // 예: return (parseInt(currentPage) - 1).toString().padStart(5, '0');
-    }
-
-    function returnNextPage(currentPage) {
-        // 다음 페이지 반환 로직 구현
-        // 예: return (parseInt(currentPage) + 1).toString().padStart(5, '0');
-    }
-
-    function updateTimer() {
-        const timerElement = document.getElementById('timer');
-        const timer2Element = document.getElementById('timer2');
-
-        const totalSeconds = 2 * 60 * 60; // 2시간
-        const elapsedHours = Math.floor(totalTime / 3600);
-        const elapsedMinutes = Math.floor((totalTime % 3600) / 60);
-        const elapsedSeconds = totalTime % 60;
-
-        const remainingSeconds = totalSeconds - totalTime;
-        const remainingHours = Math.floor(remainingSeconds / 3600);
-        const remainingMinutes = Math.floor((remainingSeconds % 3600) / 60);
-        const remainingSecondsLeft = remainingSeconds % 60;
-
-        timerElement.textContent = `경과시간: ${formatTime(elapsedHours, elapsedMinutes, elapsedSeconds)}`;
-        timer2Element.textContent = `남은 시간: ${formatTime(remainingHours, remainingMinutes, remainingSecondsLeft)}`;
-
-        if (totalTime < totalSeconds) {
-            totalTime++;
-            setTimeout(updateTimer, 1000);
-        } else {
-            alert(`제한시간이 경과되었습니다. ${count * 5}점 입니다.`);
+        function redirectToSubject(subject, recentlyKey) {
+            const url = `subject.html?variable=${subject}&year=2023&lastDigit=${recentlyKey}&questionNumber=0`;
+            window.location.href = url;
         }
-    }
-
-    function formatTime(hours, minutes, seconds) {
-        return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-    }
-
-    document.addEventListener('DOMContentLoaded', function() {
-        const menuOpenBtn = document.getElementById('menuOpen');
-        const menu = document.getElementById('menu');
-        
-        menuOpenBtn.addEventListener('click', function() {
-            menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
-        });
-
-        document.getElementById('nextPage').addEventListener('click', () => {
-            loadSubjectQuestionSet(currentSubject, currentPage, nextQuestionNumber);
-            window.scrollTo(0, 0);
-        });
-
-        document.getElementById('prevPage').addEventListener('click', () => {
-            const prevPageInfo = searchPrevPageNum(firstQuestionNumber);
-            if (prevPageInfo) {
-                loadSubjectQuestionSet(currentSubject, prevPageInfo.prevPage, prevPageInfo.searchingPrevQuestionNum);
-                window.scrollTo(0, 0);
-            }
-        });
-
-        // 초기 문제 로드
-        loadSubjectQuestionSet('c', '20231', '0');
-
-        // 타이머 시작
-        updateTimer();
-    });
-
-    function changePageToMain() {
-        window.location.href = 'index.html'; // 메인 페이지 URL로 변경하세요
-    }
     </script>
 </body>
 </html>
