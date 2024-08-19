@@ -1,0 +1,375 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[2022년 1회] 정보처리기사 기출문제</title>
+  <link rel='stylesheet' href="information.css">
+</head>
+<body>
+  <div id="id"></div>
+
+  <div id="timer2">제한시간:02:30:00</div>
+
+  <div id="timer">02:30:00</div>
+  <button id="menuOpen">메뉴</button>
+  <div id="menu">
+    <button id="menuButton">메뉴</button>
+    <p><br></p>
+    <div class="mainmenu" id="2020년">
+      <a  href='#2020_1_1.html' class = "mainmenu" id="2020년">[2020년 기출문제]</a>
+        </div>
+        <div class="submenu">
+        <a href="2020_1_1.html#question1" id="menu1">[2020년 1회 기출]</a>
+        <a href="2020_2_1.html#question5" id="menu2">[2020년 2회 기출]</a>
+        <a href="2020_3_1.html#question9" id="menu3">[2020년 3회 기출]</a>
+        <a href="2020_4_1.html#question13" id="menu4">[2020년 4회 기출]</a>
+        </div>
+      <p><br></p>
+    
+  
+      <div class="mainmenu" id="2021년">
+        <a  href='#2021_1_1.html' class = "mainmenu" id="2021년">[2021년 기출문제]</a>
+          </div>
+          <div class="submenu">
+          <a href="2021_1_1.html#question1" id="menu5">[2021년 1회 기출]</a>
+          <a href="2021_2_1.html#question5" id="menu6">[2021년 2회 기출]</a>
+          <a href="2021_3_1.html#question9" id="menu7">[2021년 3회 기출]</a>
+          <a href="2021_4_1.html#question13" id="menu8">[2021년 4회 기출]</a>
+          </div>
+        <p><br></p>
+  
+        <div class="mainmenu" id="2022년">
+          <a  href='#2022_1_1.html' class = "mainmenu" id="2022년">[2022년 기출문제]</a>
+            </div>
+            <div class="submenu">
+            <a href="2022_1_1.html#question1" id="menu9">[2022년 1회 기출]</a>
+            <a href="2022_2_1.html#question5" id="menu10">[2022년 2회 기출]</a>
+            <a href="2022_3_1.html#question9" id="menu11">[2022년 3회 기출]</a>
+            <a href="2022_4_1.html#question13" id="menu12">[2022년 4회 기출]</a>
+            </div>
+          <p><br></p>
+        
+      
+          <div class="mainmenu" id="2023년">
+            <a  href='#2023_1_1.html' class = "mainmenu" id="2023년">[2023년 기출문제]</a>
+              </div>
+              <div class="submenu">
+              <a href="2023_1_1.html#question1" id="menu13">[2023년 1회 기출]</a>
+              <a href="2023_2_1.html#question5" id="menu14">[2023년 2회 기출]</a>
+              <a href="2023_3_1.html#question9" id="menu15">[2023년 3회 기출]</a>
+              <a href="2023_4_1.html#question13" id="menu16">[2023년 4회 기출]</a>
+              </div>
+            <p><br></p>
+    </div>
+    
+    
+
+
+  </div>
+    
+    
+    
+
+  <div id="main-content">
+    <h1>[2022년 1회] 정보처리기사 기출문제</h1>
+    <button onclick="changePageToMain()">메인 메뉴로 돌아가기</button>
+    <div id="page1" class="page active">
+      
+        <div id="question1">
+            <p>문제 1:  다음 설명에 맞는 RAID 단계를 숫자로 쓰시오.</p>
+            <p>- 스트라이프(Stripe or Striping)</p>
+            <p>- 두 개 이상의 하드디스크를 병렬로 연결해, 하나의 하드디스크처럼 이용하는 기술</p>
+            <textarea id="answer1" rows="3" cols="50"></textarea>
+        </div>
+            
+          
+          <button id="checkAnswer1">정답 확인</button>
+          <button id="eraseAnswer1">정답 지우기</button>
+          <div id="answerResult1">
+            <p id="correctAnswer1"></p>
+          </div>
+      
+          <div id="question2">
+            <p>문제 2: 다음 DB 회복 기법에 대한 설명에 알맞은 답을 [보기]에서 찾아 작성하시오.</p>
+            [보기]</p>
+            (1) 장애 발생 전 DB로 복구, 재실행</p>
+            (2) 변경 연산 취소</p>
+            <div class="rounded-rectangle-box">
+            ㄱ. commit   ㄴ. Active ㄷ. Partially Committedl</p>
+            ㄹ. Rollback ㅁ. Abort  ㅂ. Committedl</p>
+            ㅅ. Failed   ㅇ. redo   ㅈ. undo</p>
+            </div>
+            <textarea id="answer2" rows="3" cols="50"></textarea>
+          </div>
+          <button id="checkAnswer2">정답 확인</button>
+          <button id="eraseAnswer2">정답 지우기</button>
+          <div id="answerResult2">
+            <p id="correctAnswer2"></p>
+          </div>
+      
+          <div id="question3">
+            <p>문제 3: 자바 - static 메소드 문제</p>
+            <div class="rounded-rectangle-box">
+              <p>
+                class A {</p>
+                  int a;</p>
+                  int b;</p>
+              }</p>
+              
+              public class Main {</p>
+                  static void func1(A m){</p>
+                          m.a *= 10;</p>
+                  }</p>
+                  
+                  static void func2(A m){</p>
+                          m.a += m.b;</p>
+                  }</p>
+              
+                  public static void main(String args[]){</p>
+                          A m = new A();</p>
+                          m.a = 100;</p>
+                          func1(m);</p>
+                          m.b = m.a;</p>
+                          func2(m);</p>
+                          System.out.printf("%d", m.a);</p>
+                  }</p>
+              
+              }
+              </p>
+
+
+            </div>
+                  
+                        
+                        
+                    
+            <textarea id="answer3" rows="3" cols="50"></textarea>
+          </div>
+          <button id="checkAnswer3">정답 확인</button>
+          <button id="eraseAnswer3">정답 지우기</button>
+          <div id="answerResult3">
+            <p id="correctAnswer3"></p>
+          </div>
+      
+          <div id="question4">
+            <p>문제 4:  다음 SQL문을 보고 SQL문의 score 결과가 내림차순으로 정렬될 수 있도록 괄호를 알맞게 채우시오.</p>
+            [SQL]</P>
+            
+        <table>
+            <tr>
+                <th> </th>
+                <th>NAME</th>
+                <th>SCORE</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>SMITH</td>
+                <td>55</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>ALLEN</td>
+                <td>88</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>SCOTT</td>
+                <td>90</td>
+            </tr>
+        </table>
+   
+    
+        SELECT name, score</P>
+        FROM 성적</P>
+        (1) BY (2) (3)</P>
+        </P>
+    
+            <textarea id="answer4" rows="3" cols="50"></textarea>
+          </div>
+          <button id="checkAnswer4">정답 확인</button>
+          <button id="eraseAnswer4">정답 지우기</button>
+          <div id="answerResult4">
+            <p id="correctAnswer4"></p>
+          </div>
+    
+      
+
+      <button id="prevPage36" style="display: none;">이전</button>
+  
+      <button id="nextPage36">다음</button>
+    </div>
+
+
+
+      <script src="information.js"></script>
+
+    <script>
+
+    const pages = document.querySelectorAll('.page');
+    let currentPage = 36;
+    
+
+    document.getElementById('nextPage36').addEventListener('click', () => {
+      
+        window.location.href = '2022_1_2.html';
+        window.scrollTo(0, 0); // 페이지 전환 시 맨 위로 스크롤
+     
+      
+    });
+
+    document.getElementById('prevPage36').addEventListener('click', () => {
+      if (currentPage > 0) {
+        pages[currentPage].classList.remove('active');
+        currentPage--;
+        pages[currentPage].classList.add('active');
+        window.scrollTo(0, 0); // 페이지 전환 시 맨 위로 스크롤
+       
+      }
+    });
+
+
+    document.getElementById('checkAnswer1').addEventListener('click', function() {
+      checkAnswer_exact(1, '정답:  0', ['0']);
+    });
+    document.getElementById('eraseAnswer1').addEventListener('click', function() {
+      eraseAnswer(1);
+    });
+
+    document.getElementById('checkAnswer2').addEventListener('click', function() {
+      checkAnswer_exact(2, '정답:  (1) ㅇ. redo (2) ㅈ. undo', ['ㅇ ㅈ','redo undo']);
+    });
+    document.getElementById('eraseAnswer2').addEventListener('click', function() {
+      eraseAnswer(2);
+    });
+
+    document.getElementById('checkAnswer3').addEventListener('click', function() {
+      checkAnswer_exact(3, '정답: 2000', ['2000']);
+    });
+    document.getElementById('eraseAnswer3').addEventListener('click', function() {
+      eraseAnswer(3);
+    });
+
+    document.getElementById('checkAnswer4').addEventListener('click', function() {
+      checkAnswer_exact(4, '정답: 1. ORDER 2.SCORE 3.DESC', ['order score desc']);
+    });
+    document.getElementById('eraseAnswer4').addEventListener('click', function() {
+      eraseAnswer(4);
+    });
+
+
+
+
+    let count = 0; // count 받아옴
+
+
+    document.addEventListener('DOMContentLoaded', function () {
+    // 타이머 설정
+    const loginId = sessionStorage.getItem("loginId");
+    // 아이디 받아오기
+    function updateloginId(){
+      const idelement = document.getElementById('id'); //아이디
+      idelement.textContent = 'ID:'+loginId;
+
+    }
+    updateloginId();
+    
+
+
+    let totalTime = 0;
+    totalTime = totalTime ? parseInt(totalTime, 10) : 0; // totalTime 초기화
+
+    
+
+    if (window.location.pathname.endsWith('project.html')) {
+            // 세션 스토리지에서 textarea 데이터 제거
+            document.querySelectorAll('textarea').forEach(textarea => {
+                sessionStorage.removeItem(textarea.id);
+            });
+        }
+
+    
+        // textarea의 상태를 로컬 스토리지에서 복원합니다.
+        document.querySelectorAll('textarea').forEach(textarea => {
+            const savedValue = sessionStorage.getItem(textarea.id);
+            if (savedValue) {
+                textarea.value = savedValue;
+            }
+
+            // 사용자가 입력하는 내용을 로컬 스토리지에 저장합니다.
+            textarea.addEventListener('input', function() {
+                sessionStorage.setItem(textarea.id, this.value);
+            });
+        });
+    
+
+    function updateTimer() {
+      
+        const timerElement = document.getElementById('timer'); //타이머
+        
+        const hours = Math.floor(totalTime / 3600); //시간
+        const minutes = Math.floor((totalTime % 3600) / 60);
+        const seconds = totalTime % 60;
+        
+
+        timerElement.textContent = 
+            `경과시간:${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+
+        if (totalTime < 2 * 60 * 60 + 30 * 60) { //제한시간 2시간 반
+            totalTime++;
+            sessionStorage.setItem("totalTime", totalTime); // totalTime 저장
+            setTimeout(updateTimer, 1000); //1초씩 흘러감
+        } else {
+            
+            alert(`제한시간이 경과되었습니다 ${count * 5}점 입니다.`);
+        }
+    }
+
+    updateTimer();
+
+    
+
+    
+
+    document.querySelectorAll('#menu a').forEach(link => { //메뉴이동 스크립트
+        link.addEventListener('click', function(event) {
+            const href = this.getAttribute('href');
+            window.location.href = href;
+        });
+    });
+
+
+
+
+    document.getElementById('menuButton').addEventListener('click', function() {
+      const menu = document.getElementById('menu');
+      
+      menu.style.display = menu.style.display === 'none' ? 'flex' : 'none';
+      
+    });
+
+
+    // 데이터를 세션 스토리지에 저장하는 함수
+    function saveSessionData() {
+        const sessionData = {
+            loginId,
+            totalTime,
+            count
+        };
+        sessionStorage.setItem("sessionData8", JSON.stringify(sessionData));
+    }
+  });
+
+    
+
+
+    
+
+
+    
+  </script>
+    
+  
+</body>
+</html>

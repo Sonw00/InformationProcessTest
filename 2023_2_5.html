@@ -1,0 +1,387 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <style>
+        table {
+        width: 80%;
+        border-collapse: collapse;
+    }
+    th, td {
+        border: 1px solid black;
+        padding: 8px;
+        text-align: left;
+    }
+    th {
+        background-color: #f2f2f2;
+    }
+
+    </style>
+    
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[2023년 2회] 정보처리기사 기출문제</title>
+  <link rel='stylesheet' href="information.css">
+</head>
+<body>
+  <div id="id"></div>
+
+  <div id="timer2">제한시간:02:30:00</div>
+
+  <div id="timer">02:30:00</div>
+  <button id="menuOpen">메뉴</button>
+  <div id="menu">
+    <button id="menuButton">메뉴</button>
+    <p><br></p>
+    <div class="mainmenu" id="2020년">
+      <a  href='#2020_1_1.html' class = "mainmenu" id="2020년">[2020년 기출문제]</a>
+        </div>
+        <div class="submenu">
+        <a href="2020_1_1.html#question1" id="menu1">[2020년 1회 기출]</a>
+        <a href="2020_2_1.html#question5" id="menu2">[2020년 2회 기출]</a>
+        <a href="2020_3_1.html#question9" id="menu3">[2020년 3회 기출]</a>
+        <a href="2020_4_1.html#question13" id="menu4">[2020년 4회 기출]</a>
+        </div>
+      <p><br></p>
+    
+  
+      <div class="mainmenu" id="2021년">
+        <a  href='#2021_1_1.html' class = "mainmenu" id="2021년">[2021년 기출문제]</a>
+          </div>
+          <div class="submenu">
+          <a href="2021_1_1.html#question1" id="menu5">[2021년 1회 기출]</a>
+          <a href="2021_2_1.html#question5" id="menu6">[2021년 2회 기출]</a>
+          <a href="2021_3_1.html#question9" id="menu7">[2021년 3회 기출]</a>
+          <a href="2021_4_1.html#question13" id="menu8">[2021년 4회 기출]</a>
+          </div>
+        <p><br></p>
+  
+        <div class="mainmenu" id="2022년">
+          <a  href='#2022_1_1.html' class = "mainmenu" id="2022년">[2022년 기출문제]</a>
+            </div>
+            <div class="submenu">
+            <a href="2022_1_1.html#question1" id="menu9">[2022년 1회 기출]</a>
+            <a href="2022_2_1.html#question5" id="menu10">[2022년 2회 기출]</a>
+            <a href="2022_3_1.html#question9" id="menu11">[2022년 3회 기출]</a>
+            <a href="2022_4_1.html#question13" id="menu12">[2022년 4회 기출]</a>
+            </div>
+          <p><br></p>
+        
+      
+          <div class="mainmenu" id="2023년">
+            <a  href='#2023_1_1.html' class = "mainmenu" id="2023년">[2023년 기출문제]</a>
+              </div>
+              <div class="submenu">
+              <a href="2023_1_1.html#question1" id="menu13">[2023년 1회 기출]</a>
+              <a href="2023_2_1.html#question5" id="menu14">[2023년 2회 기출]</a>
+              <a href="2023_3_1.html#question9" id="menu15">[2023년 3회 기출]</a>
+              <a href="2023_4_1.html#question13" id="menu16">[2023년 4회 기출]</a>
+              </div>
+            <p><br></p>
+    </div>
+    
+  </div>
+    
+    
+    
+
+  <div id="main-content">
+    <h1>[2023년 2회] 정보처리기사 기출문제</h1>
+    <button onclick="changePageToMain()">메인 메뉴로 돌아가기</button>
+    <div id="page1" class="page active">
+      
+      <div id="question17">
+        <p>문제 17: 다음 보기의 SQL문에서 괄호안에 알맞는 단어를 작성하시오.</p>
+        <div class="rounded-rectangle-box">
+          <p>
+          DROP VIEW 학생 (         )</p>
+
+ 
+
+학생 테이블을 참조하는 다른 VIEW나 제약 조건까지 모두 삭제되어야 한다.</p>
+        </div>
+             
+        <textarea id="answer17" rows="3" cols="50"></textarea>
+      </div>
+      <button id="checkAnswer17">정답 확인</button>
+      <button id="eraseAnswer17">정답 지우기</button>
+      <div id="answerResult17">
+        <p id="correctAnswer17"></p>
+      </div>
+  
+      <div id="question18">
+        <p>문제 18: 다음 코드는 선택정렬 구현에 관한 문제이다.  오름차순으로 정렬할 경우 빈칸에 알맞는 연산자를 보기에서 골라 작성하시오.</p>
+     <div class="rounded-rectangle-box">
+        <p>
+          #include</p>
+int main() {</p>
+    int E[] = {64, 25, 12, 22, 11};</p>
+    int n = sizeof(E) / sizeof(E[0]);</p>
+    int i = 0;</p>
+    do {</p>
+        int j = i + 1;</p>
+        do {</p>
+            if (E[i] (     ) E[j]) {</p>
+                int tmp = E[i];</p>
+                E[i] = E[j];</p>
+                E[j] = tmp;</p>
+            }</p>
+            j++;</p>
+        } while (j &lt; n);</p>
+        i++;</p>
+    } while (i &lt; n-1);</p>
+    for(int i=0; i&lt;=4; i++)</p>
+        printf("%d ", E[i]);</p>
+}
+</p>
+     </div>
+        
+
+        <textarea id="answer18" rows="3" cols="50"></textarea>
+      </div>
+      <button id="checkAnswer18">정답 확인</button>
+      <button id="eraseAnswer18">정답 지우기</button>
+      <div id="answerResult18">
+        <p id="correctAnswer18"></p>
+      </div>
+  
+      <div id="question19">
+        <p>문제 19: 다음 파이썬 코드에서 알맞는 출력값을 작성하시오.</p>
+        <div class="rounded-rectangle-box">    
+            <p>a = "engineer information processing"</p>
+              b = a[:3]</p>
+              c = a[4:6]</p>
+              d = a[28:]</p>
+              e=b+c+d</p>
+              print(e)</p>
+        </div>
+        
+        
+
+
+        <textarea id="answer19" rows="3" cols="50"></textarea>
+      </div>
+      <button id="checkAnswer19">정답 확인</button>
+      <button id="eraseAnswer19">정답 지우기</button>
+      <div id="answerResult19">
+        <p id="correctAnswer19"></p>
+      </div>
+  
+      <div id="question20">
+        <p>문제 20: 다음 설명에 대한 알맞는 답을 작성하시오. </p>
+        <div class='rounded-rectangle-box'>
+          <p>
+            1.</p>
+
+하향식 테스트 시 상위 모듈은 존재하나 하위 모듈이 없는 경우의 테스트를 위해 임시 제공되는 모듈이다.</p>
+특별한 목적의 소프트웨어를 구현하는 것으로 컴포넌트를 개발하거나 테스트할 때 사용된다.</p>
+서버-클라이언트 구조에서 서버만 구현된 상태로 테스트를 해보고 싶을때 단순히 값만 넘겨주는 가상의 클라이언트를 만들어서 테스트 할 수 있다.</p>
+ 
+
+ 
+
+2.</p>
+
+상향식 테스트 시 상위 모듈 없이 하위 모듈이 존재할 때 하위 모듈 구동 시 자료 입출력을 제어하기 위한 제어 모듈(소프트웨어)이다.</p>
+서버-클라이언트 구조에서 클라이언트만 구현된 상태로 테스트를 해보고 싶을때 접속 인증 등의 간단한 기능만 하는 가상의 서버를 만들어서 테스트 할 수 있다.</p>
+          </p>
+        </div>
+        
+
+        <textarea id="answer20" rows="3" cols="50"></textarea>
+      </div>
+      <button id="checkAnswer20">정답 확인</button>
+      <button id="eraseAnswer20">정답 지우기</button>
+      <div id="answerResult20">
+        <p id="correctAnswer20"></p>
+      </div>
+      
+      <button id="prevPage60" >이전</button>
+      <button color = red id="submit">제출</button>
+  
+      
+    </div>
+
+    
+
+
+    <script src="information.js"></script>
+    <script>
+
+    const pages = document.querySelectorAll('.page');
+    let currentPage = 60;
+    
+
+
+    document.getElementById('prevPage60').addEventListener('click', () => {
+      window.location.href = '2023_2_4.html';
+        window.scrollTo(0, 0); // 페이지 전환 시 맨 위로 스크롤
+    });
+
+
+    document.getElementById('checkAnswer17').addEventListener('click', function() {
+      checkAnswer_exact(17, '정답: cascade', ['cascade']);
+    });
+    document.getElementById('eraseAnswer17').addEventListener('click', function() {
+      eraseAnswer(17);
+    });
+
+    document.getElementById('checkAnswer18').addEventListener('click', function() {
+      checkAnswer_exact(18, '정답: >', ['>']);
+    });
+    document.getElementById('eraseAnswer18').addEventListener('click', function() {
+      eraseAnswer(18);
+    });
+
+    document.getElementById('checkAnswer19').addEventListener('click', function() {
+      checkAnswer_exact(19, '정답: engneing', ['engneing']);
+    });
+    document.getElementById('eraseAnswer19').addEventListener('click', function() {
+      eraseAnswer(19);
+    });
+
+    document.getElementById('checkAnswer20').addEventListener('click', function() {
+      checkAnswer_exact(20, '정답: 1. 스텁 2. 드라이버', ['스텁 드라이버']);
+    });
+    document.getElementById('eraseAnswer20').addEventListener('click', function() {
+      eraseAnswer(20);
+    });
+
+
+    let count = sessionStorage.getItem("count"); ; // count 받아옴
+
+   
+
+    document.addEventListener('DOMContentLoaded', function () {
+
+// 페이지 로드 시 세션 데이터를 복원합니다.
+const savedSessionData = sessionStorage.getItem("sessionData12");
+if (savedSessionData) {
+  const parsedSessionData = JSON.parse(savedSessionData);
+  loginId = parsedSessionData.loginId;
+  totalTime = parsedSessionData.totalTime;
+  score = parsedSessionData.score;
+
+  // 테이블에 데이터 추가
+  const rows = document.querySelectorAll('tbody tr');
+  rows.forEach(row => {
+      const solvTimeCell = row.querySelector('.solv_time');
+      const scoreCell = row.querySelector('.score');
+      if (solvTimeCell && scoreCell) {
+          solvTimeCell.innerHTML = totalTime;
+          scoreCell.innerHTML = score;
+      }
+  });
+
+}
+
+// 타이머 설정
+let totalTime = sessionStorage.getItem("totalTime");
+totalTime = totalTime ? parseInt(totalTime, 10) : 0; // totalTime 초기화
+
+if (window.location.pathname.endsWith('project.html')) {
+      // 세션 스토리지에서 textarea 데이터 제거
+      document.querySelectorAll('textarea').forEach(textarea => {
+          sessionStorage.removeItem(textarea.id);
+      });
+  }
+
+
+  // textarea의 상태를 로컬 스토리지에서 복원합니다.
+  document.querySelectorAll('textarea').forEach(textarea => {
+      const savedValue = sessionStorage.getItem(textarea.id);
+      if (savedValue) {
+          textarea.value = savedValue;
+      }
+
+      // 사용자가 입력하는 내용을 로컬 스토리지에 저장합니다.
+      textarea.addEventListener('input', function() {
+          sessionStorage.setItem(textarea.id, this.value);
+      });
+  });
+
+
+function updateTimer() {
+
+  const timerElement = document.getElementById('timer'); //타이머
+  const hours = Math.floor(totalTime / 3600); //시간
+  const minutes = Math.floor((totalTime % 3600) / 60);
+  const seconds = totalTime % 60;
+
+  timerElement.textContent = 
+      `경과시간:${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+
+  if (totalTime < 2 * 60 * 60 + 30 * 60) { //제한시간 2시간 반
+      totalTime++;
+      sessionStorage.setItem("totalTime", totalTime); // totalTime 저장
+      setTimeout(updateTimer, 1000); //1초씩 흘러감
+  } else {
+      
+      alert(`제한시간이 경과되었습니다 ${count * 5}점 입니다.`);
+  }
+}
+
+updateTimer();
+
+document.getElementById('submit').addEventListener('click', function() {
+const score = count * 5;
+const sessionData = {
+  loginId: loginId,
+  totalTime: totalTime,
+  score: score
+};
+sessionStorage.setItem('sessionData12', JSON.stringify(sessionData));
+  
+  if(score>=60){
+      alert('제출 완료! 남은 시간이 저장되었습니다. '+ count*5+'점 입니다. 합격입니다. 축하드립니다.');
+
+  }
+  else{
+      alert('제출 완료! 남은 시간이 저장되었습니다. '+ count*5+'점 입니다. 불합격입니다.');
+
+  }
+  // 텍스트 영역 초기화
+  const textareas = document.querySelectorAll('textarea');
+  textareas.forEach(textarea => {
+  textarea.value = '';
+});
+// 메인 페이지로 이동
+window.location.href = 'project.html';
+});
+
+  
+
+
+
+
+
+document.querySelectorAll('#menu a').forEach(link => { //메뉴이동 스크립트
+  link.addEventListener('click', function(event) {
+  const href = this.getAttribute('href');
+  window.location.href = href;
+  });
+});
+
+  document.getElementById('menuButton').addEventListener('click', function() {
+const menu = document.getElementById('menu');
+
+menu.style.display = menu.style.display === 'none' ? 'flex' : 'none';
+menu.display='flex';
+});
+
+// 데이터를 세션 스토리지에 저장하는 함수
+function saveSessionData() {
+  const sessionData = {
+      loginId,
+      totalTime,
+      count
+  };
+  sessionStorage.setItem("sessionData12", JSON.stringify(sessionData));
+}
+});
+
+
+
+</script>
+</body>
+</html>

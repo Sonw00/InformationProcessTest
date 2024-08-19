@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>과목별 기출 문제 풀이</title>
+    <style>
+        .container { margin: 20px; }
+        .ptag { font-size: 18px; font-weight: bold; }
+        .list { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .list th, .list td { border: 1px solid #ddd; padding: 8px; }
+        .list th { background-color: #f2f2f2; text-align: center; }
+        .list td { text-align: center; }
+        .btn { padding: 5px 10px; font-size: 14px; }
+        .hover-highlight:hover { text-decoration: underline; color: blue; }
+        .recentButton { margin-left: 10px; }
+    </style>
+</head>
+<body>
+    <div class="container" onclick="toggleList(this, 'list2')">
+        <p class="ptag">정보처리기사 과목별 기출 문제 풀이</p>
+    </div>
+    <table id="list2" class="list">
+        <thead>
+            <tr>
+                <th class="tdtitle">강의명</th>
+                <th class="thLastDigit">최근 풀이 회차</th>
+                <th class="thAction">이동</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="tdtitle"><a href="subject.html?variable=c&year=2023&lastDigit=1&questionNumber=0">[C언어] 정보처리기사 실기 기출</a></td>
+                <td class="lastDigit" data-subject="c"></td>
+                <td><button class="btn" onclick="redirectToSubject('c')">이동</button></td>
+            </tr>
+            <tr>
+                <td class="tdtitle"><a href="subject.html?variable=java&year=2023&lastDigit=1&questionNumber=0">[JAVA] 정보처리기사 실기 기출</a></td>
+                <td class="lastDigit" data-subject="java"></td>
+                <td><button class="btn" onclick="redirectToSubject('java')">이동</button></td>
+            </tr>
+            <tr>
+                <td class="tdtitle"><a href="subject.html?variable=python&year=2023&lastDigit=1&questionNumber=0">[PYTHON] 정보처리기사 실기 기출</a></td>
+                <td class="lastDigit" data-subject="python"></td>
+                <td><button class="btn" onclick="redirectToSubject('python')">이동</button></td>
+            </tr>
+            <tr>
+                <td class="tdtitle"><a href="subject.html?variable=database&year=2023&lastDigit=1&questionNumber=0">[데이터베이스] 정보처리기사 실기 기출</a></td>
+                <td class="lastDigit" data-subject="database"></td>
+                <td><button class="btn" onclick="redirectToSubject('database')">이동</button></td>
+            </tr>
+            <tr>
+                <td class="tdtitle"><a href="subject.html?variable=software&year=2023&lastDigit=1&questionNumber=0">[소프트웨어] 정보처리기사 실기 기출</a></td>
+                <td class="lastDigit" data-subject="software"></td>
+                <td><button class="btn" onclick="redirectToSubject('software')">이동</button></td>
+            </tr>
+            <tr>
+                <td class="tdtitle"><a href="subject.html?variable=network&year=2023&lastDigit=1&questionNumber=0">[네트워크] 정보처리기사 실기 기출</a></td>
+                <td class="lastDigit" data-subject="network"></td>
+                <td><button class="btn" onclick="redirectToSubject('network')">이동</button></td>
+            </tr>
+            <tr>
+                <td class="tdtitle"><a href="subject.html?variable=security&year=2023&lastDigit=1&questionNumber=0">[정보 보안] 정보처리기사 실기 기출</a></td>
+                <td class="lastDigit" data-subject="security"></td>
+                <td><button class="btn" onclick="redirectToSubject('security')">이동</button></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        function toggleList(container, listId) {
+            var list = document.getElementById(listId);
+            list.style.display = (list.style.display === 'none') ? 'table' : 'none';
+        }
+
+        window.onload = function() {
+            
+
+            document.querySelectorAll('.lastDigit').forEach(td => {
+                const subject = td.getAttribute('data-subject');
+                const recentlyKey = subject + '_recently';
+                let text = loggedInUser[recentlyKey] || '없음';
+                const recentQText = document.createElement('a');
+                a.textContent = text;
+                const recentQButton = document.createElement('button');
+                recentQButton.className = 'recentButton';
+                recentQButton.textContent = '이동';
+                recentQButton.addEventListener('click', function() {
+                    redirectToSubject(subject, loggedInUser[recentlyKey]);
+                });
+                td.appendChild(recentQText);
+                td.appendChild(recentQButton);
+            });
+        };
+
+        function redirectToSubject(subject, recentlyKey) {
+            const url = `subject.html?variable=${subject}&year=2023&lastDigit=${recentlyKey}&questionNumber=0`;
+            window.location.href = url;
+        }
+    </script>
+</body>
+</html>
