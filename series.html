@@ -87,12 +87,12 @@
             <div id="question1">
                 <p id="questionName1"></p>
                 <table id="questionTable1"></table>
-                <pre style="display: none;">
-                <code id="code1">
-                </code>
-        </pre>
                 <div id="divBox1">
                 </div>
+                <pre style="display: none;">
+                    <code id="code1">
+                    </code>
+                </pre>
                 <textarea id="answer1" rows="3" cols="50"></textarea>
             </div>
             <button id="checkAnswer1">정답 확인</button>
@@ -104,12 +104,12 @@
             <div id="question2">
                 <p id="questionName2"></p>
                 <table id="questionTable2"></table>
+                <div id="divBox2">
+                </div>
                 <pre style="display: none;">
                 <code id="code2">
                 </code>
             </pre>
-                <div id="divBox2">
-                </div>
 
                 <textarea id="answer2" rows="3" cols="50"></textarea>
             </div>
@@ -122,13 +122,13 @@
             <div id="question3">
                 <p id="questionName3"></p>
                 <table id="questionTable3"></table>
+                <div id="divBox3">
+                </div>
                 <pre style="display: none;">
                 <code id="code3">
                 </code>
             </pre>
 
-                <div id="divBox3">
-                </div>
                 <textarea id="answer3" rows="3" cols="50"></textarea>
             </div>
             <button id="checkAnswer3">정답 확인</button>
@@ -140,12 +140,12 @@
             <div id="question4">
                 <p id="questionName4"></p>
                 <table id="questionTable4"></table>
+                <div id="divBox4">
+                </div>
                 <pre style="display: none;">
                 <code id="code4">
                 </code>
             </pre>
-                <div id="divBox4">
-                </div>
 
                 <textarea id="answer4" rows="3" cols="50"></textarea>
             </div>
@@ -154,11 +154,13 @@
             <div id="answerResult4">
                 <p id="correctAnswer4"></p>
             </div>
+            <br>
 
 
-            <button id="prevPage" style="display: none;">이전</button>
+            <button id="prevPage">이전</button>
             <button id="nextPage">다음</button>
-            <button color = red id="submit" style="display:none">제출</button>
+
+            <button color=red id="submit" style="display:none">제출</button>
 
         </div>
         <script src="information.js"></script>
@@ -167,34 +169,43 @@
             let firstQuestionNumber = '0';
             let nextQuestionNumber = '0';
             let currentPage = '0';
+            let prevPageButton = document.getElementById('prevPage');
+            let nextPageButton = document.getElementById('nextPage');
+            let submitButton = document.getElementById('submit');
+            let prevPage = '0';
+            let nextPage = '0';
+            let currentSubject = '0';
             let year = '0';
             let lastDigit = '0';
             let n;
 
             const header = document.querySelector("h1");
             const pages = document.querySelectorAll('.page');
-            const prevPage = document.getElementById('prevPage');
-            const nextPage = getElementById('nextPage');
 
+            var storedUsers;
+            var loggedInUser;
 
-            nextPage.addEventListener('click', () => {
+            submitButton.addEventListener('click', () => {
+
+            });
+
+            nextPageButton.addEventListener('click', () => {
 
                 loadSeriesQuestionSet(currentPage, nextQuestionNumber);
                 window.scrollTo(0, 0); // 페이지 전환 시 맨 위로 스크롤
 
 
             });
-            prevPage.addEventListener('click', () => {
-                // if (firstQuestionNumber <= 4) {
-                //     pages[currentPage].classList.remove('active');
-                //     pages[currentPage].classList.add('active');
-                //     window.scrollTo(0, 0); // 페이지 전환 시 맨 위로 스크롤
-                // }
-                loadSeriesQuestionSet(currentPage,(firstQuestionNumber-4).toString);
+            prevPageButton.addEventListener('click', () => {
+                console.log(parseInt(firstQuestionNumber) - 4);
+                if (parseInt(firstQuestionNumber) - 4 < 0) {
+                    loadSeriesQuestionSet(currentPage, 0);
+                } else {
+                    loadSeriesQuestionSet(currentPage, parseInt(firstQuestionNumber) - 4);
+                }
                 window.scrollTo(0, 0); // 페이지 전환 시 맨 위로 스크롤
             });
             function loadSeriesQuestionSet(page, i) {
-                n=0;
                 firstQuestionNumber = i;
                 currentPage = page;
                 let year = page.slice(0, 4);
@@ -203,19 +214,36 @@
                 if (page) header.textContent = '[' + year + '년 ' + lastDigit + '회] 정보처리기사 기출문제';
                 else header.textContent = '정보처리기사 기출문제';
 
-                if(i==0){
-                    prevPage.style.display = 'none';
-                }else{
-                    prevPage.style.display = 'block';
+                if (i == 0) {
+                    prevPageButton.style.display = 'none';
+                    submitButton.style.display = 'none';
+                } else if (i >= 16) {
+                    nextPageButton.style.display = 'none';
+                    submitButton.style.display = 'block';
+
+
+                }
+                else {
+                    prevPageButton.style.display = 'block';
+                    nextPageButton.style.display = 'block';
+                    submitButton.style.display = 'none';
                 }
 
                 for (let j = 1; j <= 4; j++) {
-                    document.getElementById(`questionName${j}`).innerHTML = '';
-                    document.getElementById(`questionTable${j}`).innerHTML = '';
-                    document.getElementById(`code${j}`).innerHTML = '';
-                    document.querySelector(`#question${j} pre`).style.display = 'none';
-                    document.getElementById(`divBox${j}`).innerHTML = '';
+                    // document.getElementById(`questionName${j}`).innerHTML = '';
+                    // document.getElementById(`questionTable${j}`).innerHTML = '';
+                    // document.getElementById(`code${j}`).innerHTML = '';
+                    // document.querySelector(`#question${j} pre`).style.display = 'none';
+                    // document.getElementById(`divBox${j}`).innerHTML = '';
+
+                    const correctAnswerElement = document.getElementById('correctAnswer' + j);
+                    const answerResultElement = document.getElementById('answerResult' + j);
+                    const answerTextarea = document.getElementById('answer' + j)
+                    correctAnswerElement.textContent = '';
+                    answerTextarea.value = '';
+                    answerResultElement.style.display = 'none';
                 }
+                console.log('n:' + n)
 
                 while (i < questions.length && n < 4) {
                     console.log("Question " + (n + 1) + " Answer:", questions[i].answer);
@@ -228,8 +256,41 @@
 
                     let index = n + 1;
                     let question = questions[i];
+                    let currentI = i;
                     document.getElementById(`checkAnswer${index}`).addEventListener('click', function () {
-                        checkAnswer(index, question.answer);
+                        //문제확인 알고리즘
+                        if (question.hasOwnProperty('answer_and')) {
+                            checkAnswer_and(index, question.answer_and)
+                        } else if (question.hasOwnProperty('answer_exact')) {
+                            checkAnswer_exact(index, question.answer_exact)
+                        }
+                        else {
+                            checkAnswer(index, question.answer);
+                        }
+                        //마지막 풀이문제 저장
+                        console.log(loggedInUser);
+                        if (loggedInUser) {
+
+                            /*
+                            console.log(JSON.parse(localStorage.getItem('users')));
+                            storedUsers.forEach(user => {
+
+                                if (user.id === loggedInUser.id) {
+                                    let recently_q = currentSubject + '_recently';
+                                    console.log("현재 회차 : "+currentPage+", 마지막풀이 문제 번호 : "+currentI);
+                                    user[recently_q] = currentPage + currentI;
+                                }
+                            });
+
+                            // 수정된 'users' 데이터를 다시 로컬스토리지에 저장
+                            localStorage.setItem('users', JSON.stringify(storedUsers));
+
+                            // 디버그를 위해 콘솔에 저장된 'users' 데이터 출력
+                            console.log(JSON.parse(localStorage.getItem('users')));*/
+
+
+
+                        }
                     });
                     document.getElementById(`eraseAnswer${index}`).addEventListener('click', function () {
                         eraseAnswer(index);
@@ -237,9 +298,10 @@
 
                     n++;
                     i++;
+                    nextQuestionNumber = i;
                     if (n >= 4) {
                         lastQuestionNumber = page + i;
-                        console.log(lastQuestionNumber);
+                        console.log('다음페이지 시작번호 : ' + lastQuestionNumber);
                         break;
                     }
                 }
@@ -252,8 +314,8 @@
                         document.getElementById(`divBox${j}`).innerHTML = '';
                     }
                 }
-                
-                n=0;
+
+                n = 0;
 
 
             }
@@ -263,6 +325,7 @@
             let count = sessionStorage.getItem("count");; // count 받아옴
 
             function checkAnswer(questionNumber, correctAnswer) {
+                console.log('checkAnswer 실행');
                 const userAnswer = document.getElementById('answer' + questionNumber).value.trim().toLowerCase();
                 const correctAnswerElement = document.getElementById('correctAnswer' + questionNumber);
                 const answerResultElement = document.getElementById('answerResult' + questionNumber);
@@ -273,23 +336,31 @@
                 if (Array.isArray(correctAnswer)) {
                     isCorrect = correctAnswer.some(answer =>
                         userAnswer.includes(answer.toLowerCase().trim())
+
                     );
+                    correctAnswer = correctAnswer.map(answer => answer.replace(/\n/g, '<br>'));
+
                 } else {
                     isCorrect = userAnswer === correctAnswer.toLowerCase().trim();
+                    correctAnswer = correctAnswer.replace(/\n/g, '<br>');
                 }
+                console.log(correctAnswer);
 
                 if (isCorrect) {
                     correctAnswerElement.innerHTML = '정답입니다!';
                     count++;
                     sessionStorage.setItem("count", count);
                 } else {
-                    correctAnswerElement.innerHTML = `오답입니다. 정답은: ${Array.isArray(correctAnswer) ? correctAnswer.join(' 또는 ') : correctAnswer}`;
+                    correctAnswerElement.innerHTML = `오답입니다. 정답은:<br> ${Array.isArray(correctAnswer) ? correctAnswer.join(' 또는 ') : correctAnswer}`;
                 }
+
                 answerResultElement.style.display = 'block';
 
 
             }
             function checkAnswer_and(questionNumber, correctAnswer) {
+
+                console.log('checkAnswer_and 실행');
                 const userAnswer = document.getElementById('answer' + questionNumber).value.trim().toLowerCase();
                 const correctAnswerElement = document.getElementById('correctAnswer' + questionNumber);
                 const answerResultElement = document.getElementById('answerResult' + questionNumber);
@@ -304,7 +375,11 @@
                             break;
                         }
                     }
-
+                    if (Array.isArray(correctAnswer)) {
+                        correctAnswer = correctAnswer.map(answer => answer.replace(/\n/g, '<br>'));
+                    } else {
+                        correctAnswer = correctAnswer.replace(/\n/g, '<br>');
+                    }
                     if (isCorrect) {
                         correctAnswerElement.innerHTML = `정답입니다! (키워드 모두 포함: "${keywords.join(', ')}")`;
                         count++;
@@ -312,13 +387,14 @@
                     } else {
                         console.log('Expected keywords:', keywords);
                         console.log('User answer:', userAnswer);
-                        correctAnswerElement.innerHTML = `오답입니다. ${questionNumber}번 정답은: ${keywords.join(' 그리고 ')}`;
+                        correctAnswerElement.innerHTML = `오답입니다. ${questionNumber}번 정답은:<br> ${keywords.join(' 그리고 ')}`;
                     }
                     answerResultElement.style.display = 'block';
                 }
             }
 
             function checkAnswer_exact(questionNumber, correctAnswer) {
+                console.log('checkAnswer_exact 실행 correctAnswer : ' + correctAnswer);
                 const userAnswer = document.getElementById('answer' + questionNumber).value.trim();
                 const correctAnswerElement = document.getElementById('correctAnswer' + questionNumber);
                 const answerResultElement = document.getElementById('answerResult' + questionNumber);
@@ -326,19 +402,22 @@
                 let isCorrect = false;
 
                 if (Array.isArray(correctAnswer)) {
-                    isCorrect = correctAnswer.some(answer =>
-                        userAnswer.toLowerCase() === answer.toLowerCase().trim()
-                    );
+                    // 배열이 여러 개일 때, 순서대로 모든 항목이 포함되어 있어야 함
+                    const combinedAnswer = correctAnswer.join(' ').toLowerCase().trim();
+                    isCorrect = userAnswer.toLowerCase().trim() === combinedAnswer;
+                    correctAnswer = correctAnswer.map(answer => answer.replace(/\n/g, '<br>'));
                 } else {
                     isCorrect = userAnswer.toLowerCase() === correctAnswer.toLowerCase().trim();
+                    correctAnswer = correctAnswer.replace(/\n/g, '<br>');
                 }
+                console.log(correctAnswer);
 
                 if (isCorrect) {
                     correctAnswerElement.innerHTML = '정답입니다! (정확히 일치)';
                     count++;
                     sessionStorage.setItem("count", count);
                 } else {
-                    correctAnswerElement.innerHTML = `오답입니다. ${questionNumber}번 정답은: ${Array.isArray(correctAnswer) ? correctAnswer.join(' 또는 ') : correctAnswer}`;
+                    correctAnswerElement.innerHTML = `오답입니다. ${questionNumber}번 정답은: <br> ${Array.isArray(correctAnswer) ? correctAnswer.join(', ') : correctAnswer}`;
                 }
                 answerResultElement.style.display = 'block';
             }
@@ -360,7 +439,7 @@
                 }
                 return false;
             }
-            function getQueryVariables(variable, year, lastDigit, questionNumber) {
+            function getQueryVariables(year, lastDigit, questionNumber) {
                 // 쿼리 문자열에서 '?'를 제거합니다.
                 var query = window.location.search.substring(1);
                 // '&'로 구분하여 각 쌍을 배열로 만듭니다.
@@ -368,7 +447,6 @@
 
                 // 결과를 저장할 객체를 생성합니다.
                 var result = {
-                    variable: null,
                     year: null,
                     lastDigit: null,
                     questionNumber: null
@@ -378,9 +456,6 @@
                 for (var i = 0; i < vars.length; i++) {
                     var pair = vars[i].split("=");
                     // 변수의 값을 객체에 저장합니다.
-                    if (pair[0] == variable) {
-                        result.variable = pair[1];
-                    }
                     if (pair[0] == year) {
                         result.year = pair[1];
                     }
@@ -396,18 +471,23 @@
                 return result;
             }
             document.addEventListener('DOMContentLoaded', function () {
-                
+
+                storedUsers = JSON.parse(localStorage.getItem('users'));
+                loggedInUser = JSON.parse(sessionStorage.getItem('loggedInUser'));
+
                 totalTime = sessionStorage.getItem("totalTime");
                 totalTime = totalTime ? parseInt(totalTime, 10) : 0;
 
                 var queryResult = getQueryVariables('year', 'lastDigit', 'questionNumber');
                 // 결과 출력
-                if (queryResult.variable) {
+                if (queryResult) {
                     console.log(queryResult.year); // "2023"
                     console.log(queryResult.lastDigit); // "1"
                     console.log(queryResult.questionNumber); // "5"
+                    n = 0;
                     loadSeriesQuestionSet(queryResult.year + queryResult.lastDigit, queryResult.questionNumber);
                 } else {
+                    n = 0;
                     console.log("No query parameters found");
                     loadSeriesQuestionSet('20231', '0');
                 }
@@ -447,60 +527,9 @@
                         window.location.href = href;
                     });
                 });
-                
-                if(currentPage === '20241'){
-                        prevPage = '20233'
-                    } else if('20231'){
-                        prevPage = '20223'
-                    } else if('20221'){
-                        prevPage = '20213'
-                    } else if('20211'){
-                        prevPage = '20204'
-                    } else if('20201'){
-                        prevPage = ''
-                    } else if('20204'){
-                        nextPage = '20211'
-                    } else if('20213'){
-                        nextPage = '20221'
-                    } else if('20223'){
-                        nextPage = '20231'
-                    } else if('20233'){
-                        nextPage = '20241'
-                    } else if('20242'){
-                        nextPage = ''
-                    }
-                    else {
-                        prevPage = (parseInt(currentPage) - 1).toString();
-                        nextPage = (parseInt(currentPage) +1).toString();
-                    }
+
             });
 
-            function updateTimer() {
-                const timerElement = document.getElementById('timer');
-                const timer2Element = document.getElementById('timer2');
-
-                const totalSeconds = 2 * 60 * 60; // 2시간을 초로 변환
-
-                const elapsedHours = Math.floor(totalTime / 3600);
-                const elapsedMinutes = Math.floor((totalTime % 3600) / 60);
-                const elapsedSeconds = totalTime % 60;
-
-                const remainingSeconds = totalSeconds - totalTime;
-                const remainingHours = Math.floor(remainingSeconds / 3600);
-                const remainingMinutes = Math.floor((remainingSeconds % 3600) / 60);
-                const remainingSecondsLeft = remainingSeconds % 60;
-
-                timerElement.textContent = `경과시간: ${elapsedHours.toString().padStart(2, '0')}:${elapsedMinutes.toString().padStart(2, '0')}:${elapsedSeconds.toString().padStart(2, '0')}`;
-                timer2Element.textContent = `남은 시간: ${remainingHours.toString().padStart(2, '0')}:${remainingMinutes.toString().padStart(2, '0')}:${remainingSecondsLeft.toString().padStart(2, '0')}`;
-
-                if (totalTime < totalSeconds) {
-                    totalTime++;
-                    sessionStorage.setItem("totalTime", totalTime);
-                    setTimeout(updateTimer, 1000);
-                } else {
-                    alert(`제한시간이 경과되었습니다 ${count * 5}점 입니다.`);
-                }
-            };
 
             window.onload = function updateTimer() {
                 const timerElement = document.getElementById('timer');
@@ -527,7 +556,7 @@
                 } else {
                     alert(`제한시간이 경과되었습니다 ${count * 5}점 입니다.`);
                 }
-            }
+            };
 
 
 
