@@ -1,5 +1,5 @@
-# My Project
-This is a sample project that demonstrates how to use GitHub's pinned feature.
+# 정보처리기사 기출문제 풀이
+정보처리기사 실기 기출문제풀이 웹 서비스입니다. 회차별, 과목별 문제풀이 기능을 구현하였습니다. 
 
 ## Features
 - 회차별, 과목별 문제풀이 기능 구현
